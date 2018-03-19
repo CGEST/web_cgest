@@ -16,137 +16,168 @@ window.onload = function() {
 	}, 2000);
 }
 </script> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <script type="text/javascript"
-src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-9c32-5bdbdf6cdb93&groupId=5625802"></script>
+src="/c/document_library/get_file?uuid=791538b7-7859-4e8e-9c32-5bdbdf6cdb93&groupId=5625802"></script>
 <p><style type="text/css">
-        .bloco-grafico {
-            width: 800px;
-            height: 1260px;
-            text-align: center;
-            margin: auto;
-        }
+    .bloco-grafico {
+        width: 800px;
+        height: 1260px;
+        text-align: center;
+        margin: auto;
+    }
 
-        .titulo-grafico {
-            background: transparent !important;
-            color: #696969 !important;
-        }
+    .titulo-grafico {
+        background: transparent !important;
+        color: #696969 !important;
+    }
 
-        h4.subtitulo {
-            margin-top: 20px;
-            margin-bottom: -15px;
-            position: relative;
-            z-index: 999999;
-        }
+    h4.subtitulo {
+        margin-top: 20px;
+        margin-bottom: -15px;
+        position: relative;
+        z-index: 999999;
+    }
 
-        .tabela {
-            margin-top: 25px;
-        }
+    .tabela {
+        margin-top: 25px;
+    }
 
-        .tabela td {
-            padding: 10px;
-        }
+    .tabela td {
+        padding: 10px;
+    }
 
-        .titulo-tabela {
-            background: #412C34;
-        }
+    .titulo-tabela {
+        background: #412C34;
+    }
 
-        .valor-ano-tabela {
-            background: #22293A;
-            border-top: 1px solid #fff;
-        }
+    .valor-ano-tabela {
+        background: #22293A;
+        border-top: 1px solid #fff;
+    }
 
-        .select {
-            padding: 7.5px;
-            padding-left: 25%;
-            font-size: 12pt;
-            color: #333;
-            border: 1px solid #DEDEDE;
-            width: 100%;
-            background: #f2f2f2;
-        }
+    .select {
+        padding: 7.5px;
+        padding-left: 25%;
+        font-size: 12pt;
+        color: #333;
+        border: 1px solid #DEDEDE;
+        width: 100%;
+        background: #f2f2f2;
+    }
 
-        option {
-            color: #696969;
-        }
+    option {
+        color: #696969;
+    }
 
-        select:required:invalid {
-            color: gray;
-        }
+    select:required:invalid {
+        color: gray;
+    }
 
-        option[value=""][disabled] {
-            display: none;
-        }
+    option[value=""][disabled] {
+        display: none;
+    }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 2px solid #f3f3f3;
-            border-top: 3px solid #333333;
-            border-radius: 100%;
-            animation: spin 0.8s infinite linear;
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 2px solid #f3f3f3;
+        border-top: 3px solid #333333;
+        border-radius: 100%;
+        animation: spin 0.8s infinite linear;
 
-            margin: 0 auto;
-            margin-top: 70px;
-        }
+        margin: 0 auto;
+        margin-top: 70px;
+    }
 
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
         }
+        to {
+            transform: rotate(360deg);
+        }
+    }
 
-        #barraInicial {
-            margin-left: 285px;
-        }
+    #barraInicial {
+        margin-left: 285px;
+    }
 
-        #barraIntermediario {
-            margin-left: 440px;
-        }
+    #barraIntermediario {
+        margin-left: 440px;
+    }
+    
+     #barraInicialEspecifica {
+        margin-left: 230px;
+    }
 
-        .barraFaixa {
-            width: 2px;
-            margin-top: 30px;
-            height: 1290px;
-            background: #313B46;
-            position: absolute;
-            z-index: 9999999;
-            Opacity: 0.7;
-            transition: 0.2s;
-        }
+    #barraBasicoEspecifica{
+        margin-left: 335px;
+    }
+    #barraIntermediarioEspecifica {
+        margin-left: 440px;
+    }
 
-        .barraFaixa: hover {
-            box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.2);
-        }
+    .barraFaixa {
+        width: 2px;
+        margin-top: 30px;
+        height: 1290px;
+        background: #313B46;
+        position: absolute;
+        z-index: 9999999;
+        Opacity: 0.7;
+        transition: 0.2s;
+    }
 
-        .titulo-faixa {
-            color: #313B46;
-            position: absolute;
-            font-size: 12px;
-            z-index: 9999999;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+    .barraFaixa: hover {
+        box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.2);
+    }
 
-        #tituloInicial {
-            margin-left: 160px;
-        }
+    .titulo-faixa {
+        color: #313B46;
+        position: absolute;
+        font-size: 12px;
+        z-index: 9999999;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 
-        #tituloIntermediario {
-            margin-left: 325px;
-        }
+    #tituloInicialEspecifico {
+        margin-left: 140px;
+    }
 
-        #tituloAprimorado {
-            margin-left: 482px;
-        }
+    #tituloBasicoEspecifico {
+        margin-left: 270px;
+    }
 
-        #tabelaFaixas {
-            width: 300px;
-            height: 115px;
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
+    #tituloIntermediarioEspecifico {
+        margin-left: 355px;
+    }   
+
+    #tituloAprimoradoEspecifico {
+        margin-left: 482px;
+    }
+    
+    
+    
+    #tituloInicial {
+        margin-left: 160px;
+    }
+
+
+    #tituloIntermediario {
+        margin-left: 325px;
+    }
+
+
+    #tituloAprimorado {
+        margin-left: 482px;
+    }
+
+    #tabelaFaixas {
+        width: 300px;
+        height: 115px;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
 
     </style></p>
 <div ng-app="">
@@ -166,6 +197,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
             <option value="" disabled="" selected="">Meta 1 - iGovPessoas</option>
             <option value="m1">Meta 1 - iGovPessoas</option>
             <option value="m2">Meta 2 - IEOD</option>
+            <option value="m3">Meta 3 - iGovTI</option>
             <option value="m4">Meta 4 - TMDP2</option>
             <option value="m5">Meta 5 - TMDP1c</option>
             <option value="m6">Meta 6 - IPJ</option>
@@ -195,8 +227,11 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <div class="barraFaixa" id="barraIntermediario">&nbsp;</div>
 <p class="titulo-faixa" id="tituloAprimorado">Aprimorado</p>
 </div>
+    
+    
 <div id="div_grafico_igovpessoas">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -237,8 +272,10 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <div ng-switch-when="m2" class="bloco-grafico">
 <h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 2</span></span></h3>
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Execução do Orçamento Disponibilizado</span></span></h4>
+    
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -255,11 +292,76 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <p>&nbsp;</p>
 <p style="text-align: justify; margin-left: 15px;">Notas: valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
 </div>
+    
+
+<div ng-switch-when="m3" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 3</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">iGovTI</span></span></h4>
+<p>&nbsp;</p>
+<p><em>2&ordm; Levantamento de Governança e Gestão de Pessoas - Ciclo 2016</em></p>    
+    
+<div id="barraInicialGlobalEspecifica">
+<p class="titulo-faixa" id="tituloInicialEspecifico">Inicial</p>
+<div class="barraFaixa" id="barraInicialEspecifica">&nbsp;</div>
+<p class="titulo-faixa" id="tituloBasicoEspecifico">Básico</p>
+<div class="barraFaixa" id="barraBasicoEspecifica">&nbsp;</div>
+<p class="titulo-faixa" id="tituloIntermediarioEspecifico">Intermediário</p>
+<div class="barraFaixa" id="barraIntermediarioEspecifica">&nbsp;</div>
+<p class="titulo-faixa" id="tituloAprimoradoEspecifico">Aprimorado</p>
+</div>   
+        
+<div id="div_grafico_igovpessoas" style="display:none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner">&nbsp;</div>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Nota: a meta prevista para 2016 teve seu resultado divulgado apenas em 2017 pelo TCU, de modo que o valor realizado foi computado em 2017 para compor o IAM desse exercício.</p>
+<p>&nbsp;</p>
+<table id="tabelaFaixas" width="300" border="1" cellpadding="1" cellspacing="1" align="center" height="100">
+    <tbody>
+        <tr style="background: #313B46; color: #fff;">
+            <td colspan="3" style="text-align: center;"><strong>Faixas (%)</strong></td>
+        </tr>
+          <tr>
+            <td><span style="color: rgb(49, 59, 70);"><strong>Inicial</strong></span></td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">29,99</td>
+        </tr>
+        <tr>
+            <td><span style="color: rgb(49, 59, 70);"><strong>Básico</strong></span></td>
+            <td style="text-align: center;">30</td>
+            <td style="text-align: center;">49,99</td>
+        </tr>
+        <tr>
+            <td><span style="color: rgb(49, 59, 70);"><strong>Intermediário</strong></span></td>
+            <td style="text-align: center;">50</td>
+            <td style="text-align: center;">69.99</td>
+        </tr>
+        <tr>
+            <td><span style="color: rgb(49, 59, 70);"><strong>Aprimorado</strong></span></td>
+            <td style="text-align: center;">70,0</td>
+            <td style="text-align: center;">100</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+    <!-- -->
 <div ng-switch-when="m4" class="bloco-grafico">
 <h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 4</span></span></h3>
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Tempo Médio de Duração do Processo - 2&ordf; Instância (dias)</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -282,6 +384,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Tempo Médio de Duração do Processo - Fase de Conhecimento 1&ordf; Instância (dias)</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -304,6 +407,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Processos Julgados</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj">&nbsp;</div>
@@ -323,7 +427,8 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 7</span></span></h3>
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Processos Antigos</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
-<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>    
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -345,6 +450,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Ações Coletivas Julgadas - 1&ordm; grau</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -366,6 +472,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Ações Coletivas Julgadas - 2&ordm; grau</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -388,6 +495,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Conciliação - Fase de Conhecimento</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -410,6 +518,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Redução do Acervo dos Maiores Litigantes</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -429,6 +538,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Execução</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -448,6 +558,7 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 <h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Alcance das Metas (pontos)</span></span></h4>
 <div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
 <div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_igovti" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
 <div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
 <div id="div_grafico_ipj" style="display: none">&nbsp;</div>
@@ -502,6 +613,13 @@ src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-
 
         setTimeout(function() {
             document.getElementById("barraInicialGlobal").style.display = "block";
+        }, 500);
+    }
+    function mostrarNovaBarra (){
+        document.getElementById('barraInicialGlobalEspecifica').style.display = "none";
+        
+        setTimeout(function (){
+            document.getElementById('barraInicialGlobalEspecifica').style.display = "block";
         }, 500);
     }
 
