@@ -1,0 +1,2309 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+window.onload = function() {	
+	document.getElementById("div_grafico_imcsc").style.display = "none";
+	setTimeout(function(){
+		scrollWin();
+	}, 600);
+	setTimeout(function(){
+		ocultarSpinner();
+		mostrarGrafico();
+		drawGraficos();
+	}, 2000);
+}
+</script> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <script type="text/javascript">
+google.charts.load('current', {packages: ['corechart', 'controls']});
+        google.charts.setOnLoadCallback(drawGraficos);
+
+        function drawGraficos() {
+//IMCSC
+            var dado1 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015 (ano-base)', {v: 0, f: ''}, {v: 51.85, f: '51,85%'}],
+                ['2016', {v: 56.85, f: '56,85%'}, {v: 56.42, f: '56,42%'}],
+                ['2017', {v: 61.85, f: '61,85%'}, {v: 69.94, f: '69,94%'}]
+            ]);
+
+            var opcoes1 = {
+		title: '',
+                titlePosition: 'out',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+                //series: {0:{color: '#696969', visibledInLegend: true}, 1:{color: 'green', visibledInLegend: false}, 2:{color: 'yellow', visibledInLegend: false}},
+                //series: {0: {color: '#696969'}, 1:{color: 'green'}},
+                legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+		fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'},
+            }
+
+            var view1 = new google.visualization.DataView(dado1);
+            view1.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                            2,
+                             { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+var grafico1 = new google.visualization.ColumnChart(document.getElementById("div_grafico_imcsc"));
+                grafico1.draw(view1, opcoes1);
+
+/**************************************************************************/
+//IDC
+            var dado2 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 90.5, f: '90,50%'}, {v: 95.45, f: '95,45% '}],
+                ['2016', {v: 96, f: '96,00%'}, {v: 62.07, f: '62,07%'}],
+                ['2017', {v: 96.5, f: '96,50%'}, {v: 67.50, f: '67,50%'}]
+            ]);
+
+            var opcoes2 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+                legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view2 = new google.visualization.DataView(dado2);
+            view2.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico2 = new google.visualization.ColumnChart(document.getElementById("div_grafico_idc"));
+                grafico2.draw(view2, opcoes2);
+
+
+/**************************************************************************/
+//IRE
+            var dado3 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 12, f: '12,00%'}, {v: 8.93, f: '8,93% '}],
+                ['2016', {v: 11.5, f: '11,50%'}, {v: 2.86, f: '2,86%'}],
+                ['2017', {v: 11, f: '11,00%'}, {v: 3.79, f: '3,79%'}]
+            ]);
+
+            var opcoes3 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view3 = new google.visualization.DataView(dado3);
+            view3.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico3 = new google.visualization.ColumnChart(document.getElementById("div_grafico_ire"));
+                grafico3.draw(view3, opcoes3);
+
+
+
+
+
+/**************************************************************************/
+//Meta 4 - ICO
+  var dado4 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 59, f: '59%'}, {v: 58.92, f: '58,92%'}],
+                ['2017', {v: 61, f: '61%'}, {v: 61.95, f: '61,95%'}],
+            ]);
+
+            var opcoes4 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '58.5%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view4 = new google.visualization.DataView(dado4);
+            view4.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico4 = new google.visualization.ColumnChart(document.getElementById("div_grafico_ico"));
+                grafico4.draw(view4, opcoes4);
+
+
+/**************************************************************************/
+//IAFAST
+            var dado5 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 2.99, f: '2,99%'}, {v: 3.05, f: '3,05% '}],
+                ['2016', {v: 2.99, f: '2,99%'}, {v: 2.01, f: '2,01%'}],
+                ['2017', {v: 2.99, f: '2,99%'}, {v: 1.91, f: '1,91%'}]
+            ]);
+
+            var opcoes5 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view5 = new google.visualization.DataView(dado5);
+            view5.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico5 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iafast"));
+                grafico5.draw(view5, opcoes5);
+
+/**************************************************************************/
+//ISTI
+            var dado6 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 78, f: '78%'}, {v: 74.37, f: '74,37% '}],
+                ['2016', {v: 78, f: '78%'}, {v: 76.10, f: '76,10%'}],
+                ['2017', {v: 78, f: '78%'}, {v: 79.45, f: '79,45%'}]
+            ]);
+
+            var opcoes6 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view6 = new google.visualization.DataView(dado6);
+            view6.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico6 = new google.visualization.ColumnChart(document.getElementById("div_grafico_isti"));
+                grafico6.draw(view6, opcoes6);
+
+/**************************************************************************/
+//IMP
+            var dado7 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 15, f: '15%'}, {v: 27.91, f: '27,91% '}],
+                ['2016', {v: 30, f: '30%'}, {v: 37.21, f: '37,21%'}],
+                ['2017', {v: 37.5, f: '45%'}, {v: 53.49, f: '53,49%'}]
+            ]);
+
+            var opcoes7 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view7 = new google.visualization.DataView(dado7);
+            view7.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico7 = new google.visualization.ColumnChart(document.getElementById("div_grafico_imp"));
+                grafico7.draw(view7, opcoes7);
+
+/**************************************************************************/
+//IAC
+            var dado8 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2016', {v: 65, f: '65%'}, {v: 65.25, f: '65,25%'}],
+                ['2017', {v: 70, f: '70%'}, {v: 85.33, f: '85,33%'}],
+            ]);
+
+            var opcoes8 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '58.5%.5%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view8 = new google.visualization.DataView(dado8);
+            view8.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico8 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iac"));
+                grafico8.draw(view8, opcoes8);
+
+/**************************************************************************/
+//IISGC
+            var dado9 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 3, f: '3%'}, {v: 3.85, f: '3,85%'}],
+                ['2016', {v: 5, f: '5%'}, {v: 3.85, f: '3,85%'}],
+                ['2017', {v: 11, f: '11%'}, {v: 3.85, f: '3,85%'}]
+            ]);
+
+            var opcoes9 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view9 = new google.visualization.DataView(dado9);
+            view9.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico9 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iisgc"));
+                grafico9.draw(view9, opcoes9);
+
+/**************************************************************************/
+//IISGP
+            var dado10 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 4, f: '4%'}, {v: 4.17, f: '4,17%'}],
+                ['2016', {v: 20, f: '20%'}, {v: 20.83, f: '20,83%'}],
+                ['2017', {v: 50, f: '50%'}, {v: 20.83, f: '20,83%'}]
+            ]);
+
+            var opcoes10 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view10 = new google.visualization.DataView(dado10);
+            view10.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico10 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iisgp"));
+                grafico10.draw(view10, opcoes10);
+
+/**************************************************************************/
+//IACD
+            var dado11 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 50, f: '50%'}, {v: 98.51, f: '98,51%'}],
+                ['2016', {v: 96, f: '96%'}, {v: 97.79, f: '97,79%'}],
+                ['2017', {v: 97, f: '97%'}, {v: 98.70, f: '98,70%'}]
+            ]);
+
+            var opcoes11 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view11 = new google.visualization.DataView(dado11);
+            view11.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico11 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iacd"));
+                grafico11.draw(view11, opcoes11);
+
+/**************************************************************************/
+//ICRU
+            var dado12 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 50, f: '50%'}, {v: 30.49, f: '30,49%'}],
+                ['2016', {v: 60, f: '60%'}, {v: 21.93, f: '21,93%'}],
+                ['2017', {v: 70, f: '70%'}, {v: 46.08, f: '46,08%'}]
+            ]);
+
+            var opcoes12 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view12 = new google.visualization.DataView(dado12);
+            view12.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico12 = new google.visualization.ColumnChart(document.getElementById("div_grafico_icru"));
+                grafico12.draw(view12, opcoes12);
+
+/**************************************************************************/
+//IEXPE
+            var dado13 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 55, f: '55%'}, {v: 75, f: '75%'}],
+                ['2016', {v: 60, f: '60%'}, {v: 50, f: '50%'}],
+		['2017', {v: 65, f: '65%'}, {v: 75, f: '75%'}]
+            ]);
+
+            var opcoes13 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view13 = new google.visualization.DataView(dado13);
+            view13.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico13 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iexpe"));
+                grafico13.draw(view13, opcoes13);
+
+/**************************************************************************/
+//IRS
+            var dado14 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015 (ano-base)', {v: 0, f: ''}, {v: 366529899.3, f: 'R$ 366.529.899,30'}],
+                ['2016', {v: 384856394.27, f: 'R$ 384.856.394,27'}, {v: 408711374.82, f: 'R$ 408.711.374,82'}],
+                ['2017', {v: 403182889.23, f: 'R$ 403.182.889,23'}, {v: 1413528771.52, f: 'R$ 1.413.528.771,52'}]
+            ]);
+
+            var opcoes14 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view14 = new google.visualization.DataView(dado14);
+            view14.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico14 = new google.visualization.ColumnChart(document.getElementById("div_grafico_irs"));
+                grafico14.draw(view14, opcoes14);
+
+
+/**************************************************************************/
+//ICDA
+            var dado15 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 50, f: '50%'}, {v: 85.58, f: '85,58%'}],
+                ['2016', {v: 75, f: '75%'}, {v: 83.04, f: '83,04%'}],
+                ['2017', {v: 80, f: '80%'}, {v: 77.33, f: '77,33%'}]
+            ]);
+
+            var opcoes15 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view15 = new google.visualization.DataView(dado15);
+            view15.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico15 = new google.visualization.ColumnChart(document.getElementById("div_grafico_icda"));
+                grafico15.draw(view15, opcoes15);
+
+
+/**************************************************************************/
+//ITI
+            var dado16 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015', {v: 50, f: '50%'}, {v: 91.99, f: '91,99%'}],
+                ['2016', {v: 92, f: '92%'}, {v: 100, f: '100%'}],
+                ['2017', {v: 95, f: '95%'}, {v: 100, f: '100%'}]
+            ]);
+
+            var opcoes16 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view16 = new google.visualization.DataView(dado16);
+            view16.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico16 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iti"));
+                grafico16.draw(view16, opcoes16);
+
+/**************************************************************************/
+//ISIPJe
+            var dado17 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015 (ano-base)', {v: 0, f: ''}, {v: 26.93, f: '26,93%'}],
+                ['2016', {v: 31.93, f: '31,93%'}, {v: 30.79, f: '30,79%'}],
+                ['2017', {v: 36.93, f: '36,93%'}, {v: 71.98, f: '71,98%'}]
+            ]);
+
+            var opcoes17 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view17 = new google.visualization.DataView(dado17);
+            view17.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico17 = new google.visualization.ColumnChart(document.getElementById("div_grafico_isipje"));
+                grafico17.draw(view17, opcoes17);
+
+/**************************************************************************/
+//ISEPJe
+            var dado18 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2015 (ano-base)', {v: 0, f: ''}, {v: 38.41, f: '38,41%'}],
+                ['2016', {v: 43.41, f: '43,41%'}, {v: 37.23, f: '37,23%'}],
+                ['2017', {v: 48.41, f: '48,41%'}, {v: 61.07, f: '61,07%'}]
+            ]);
+
+            var opcoes18 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '75%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view18 = new google.visualization.DataView(dado18);
+            view18.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico18 = new google.visualization.ColumnChart(document.getElementById("div_grafico_isepje"));
+                grafico18.draw(view18, opcoes18);
+
+/**************************************************************************/
+//IALAP
+            var dado19 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2017', {v: 85, f: '85%'}, {v: 83.78, f: '83,78%'}]
+            ]);
+
+            var opcoes19 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '37.5%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view19 = new google.visualization.DataView(dado19);
+            view19.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico19 = new google.visualization.ColumnChart(document.getElementById("div_grafico_ialap"));
+                grafico19.draw(view19, opcoes19);
+
+
+/**************************************************************************/
+//IISGO
+            var dado20 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2017', {v: 25, f: '25%'}, {v: 37.5, f: '37,5%'}]
+            ]);
+
+            var opcoes20 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '37.5%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view20 = new google.visualization.DataView(dado20);
+            view20.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico20 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iisgo"));
+                grafico20.draw(view20, opcoes20);
+
+/**************************************************************************/
+//IRAGP
+            var dado21 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2017', {v: 3, f: '3%'}, {v: 13.88, f: '13,88%'}]
+            ]);
+
+            var opcoes21 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '37.5%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view21 = new google.visualization.DataView(dado21);
+            view21.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico21 = new google.visualization.ColumnChart(document.getElementById("div_grafico_iragp"));
+                grafico21.draw(view21, opcoes21);
+/**************************************************************************/
+//IRPJP
+            var dado22 = new google.visualization.arrayToDataTable([
+                ['Ano', 'Previsto', 'Realizado'],
+                ['2017 (ano-base)', {v: 0, f: ''}, {v: 1446409, f: '1.446.409'}]
+            ]);
+
+            var opcoes22 = {
+                titlePosition: 'none',
+                titleTextStyle: {
+                    color: '#333',
+                    fontSize: 18,
+                    bold: false
+                },
+                width: 750,
+                height: 350,
+                /*animation:{
+                            duration: 1000,
+                            easing: 'out',
+                            startup: true
+                        },*/
+                bar: {groupWidth: '37.5%'},
+                backgroundColor: '#fff',// cor de fundo
+                colors: ['#5b5b5b', '#22497e'], //cor das colunas
+legend: {position: 'bottom', alignment: 'center', textStyle: {fontSize: 15}},
+tooltip: {textStyle: {fontSize: 15}},
+fontSize: 13,
+                vAxis: {baseline: 0, baselineColor: '#51565a', gridlines: {color: 'transparent'}, textPosition: 'none'}
+            }
+
+            var view22 = new google.visualization.DataView(dado22);
+            view22.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"},
+                           2,
+                           { calc: "stringify",
+                             sourceColumn: 2,
+                             type: "string",
+                             role: "annotation"}]);
+
+
+            var grafico22 = new google.visualization.ColumnChart(document.getElementById("div_grafico_irpjp"));
+                grafico22.draw(view22, opcoes22);
+
+        }//Fechamento da funçaõ principal drawGraficos
+
+</script>
+<p><style type="text/css">
+	.bloco-grafico{
+		width: 750px;
+		height: 350px;
+		text-align: center;
+		margin: auto;
+	}
+	.titulo-grafico{
+		background: transparent !important;
+		color: #696969 !important;
+	}
+	h4.subtitulo {
+		margin-top: 20px;
+		margin-bottom: -15px;
+		position: relative;
+		z-index: 999999;
+	}
+	.tabela{
+		margin-top: 25px;
+	}
+	.tabela td{
+		padding: 10px;
+	}
+	.titulo-tabela{
+		background: #5b5b5b;
+	}
+	.valor-ano-tabela{
+		background: #22293A;
+		border-top: 1px solid #333;
+	}
+	.select{
+		padding: 7.5px 4.5px 4.5px 25%;
+		margin-top: -1px;
+    		font-size: 12pt;
+    		color: #333;
+		border: 1px solid #DEDEDE;
+		width: 100%;
+		background: #f2f2f2;
+	}
+	option{
+		color: #696969;
+	}
+select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+.spinner {
+	width: 50px;
+	height: 50px;
+	border: 2px solid #f3f3f3;
+	border-top: 3px solid #333333;
+	border-radius: 100%;
+	animation: spin 0.8s infinite linear;
+	
+	margin: 0 auto;
+	margin-top: 70px;
+}
+@keyframes spin {
+	from{
+		transform: rotate(0deg);
+	} to{
+		transform: rotate(360deg);
+	}
+}
+div#ajuste{
+		height: 225px;;
+	}
+</style></p>
+<div ng-app="">
+<p style="text-align: center;"><strong><span style="color: rgb(49, 59, 70);"><span style="font-size: x-large;">Resultados dos Indicadores</span></span></strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<table width="251" border="0" cellpadding="1" cellspacing="1" align="center">
+    <tbody>
+        <tr>
+            <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=ded1a31a-7beb-46c6-a15c-d850cd88b93b&amp;groupId=5625802&amp;t=1496922110517" width="250" height="35" alt="" /></td>
+            <td rowspan="2" style="text-align: center; padding:10px">&nbsp;</td>
+            <td rowspan="1" style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/visao-por-meta"><img src="/image/image_gallery?uuid=928e2c21-5821-4244-817f-eb15aae0aa7b&amp;groupId=5625802&amp;t=1497706299773" width="250" height="35" alt="" /></a></td>
+        </tr>
+        <tr>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/2015"><img src="/image/image_gallery?uuid=144670b9-65f2-4220-bf07-0753fd244fd7&amp;groupId=5625802&amp;t=1496922045540" width="83" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/2016"><img src="/image/image_gallery?uuid=f0624775-b22e-4aa0-9a93-6c3d1774c70f&amp;groupId=5625802&amp;t=1497011633813" width="83" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais"><img src="/image/image_gallery?uuid=73f3b1a7-a3c8-41c2-a03c-e09a19dc7d86&amp;groupId=5625802&amp;t=1496922097404" width="84" height="35" alt="" /></a></td>
+            <td rowspan="1"><select class="select" ng-model="myVar" onclick="drawGraficos(); ocultarSpinner()" onchange="drawGraficos(); ocultarSpinner()">
+            <option value="" disabled="" selected="">Meta 1 - IMCSC</option>
+            <option value="m1">Meta 1 - IMCSC</option>
+            <option value="m2">Meta 2 - IDC</option>
+            <option value="m3">Meta 3 - IRE</option>
+            <option value="m4">Meta 4 - ICO</option>
+            <option value="m5">Meta 5 - IAFAST</option>
+            <option value="m6">Meta 6 - ISTI</option>
+            <option value="m7">Meta 7 - IMP</option>
+            <option value="m8">Meta 8 - IAC</option>
+            <option value="m9">Meta 9 - IISGC</option>
+            <option value="m10">Meta 10 - IISGP</option>
+            <option value="m11">Meta 11 - IACD</option>
+            <option value="m12">Meta 12 - ICRU</option>
+            <option value="m13">Meta 13 - IEXPE</option>
+            <option value="m14">Meta 14 - IRS</option>
+            <option value="m15">Meta 15 - ICDA</option>
+            <option value="m16">Meta 16 - ITI</option>
+            <option value="m17">Meta 17 - ISIPJe</option>
+            <option value="m18">Meta 18 - ISEPJe</option>
+            <option value="m19">Meta 19 - IALAP</option>
+            <option value="m20">Meta 20 - IISGO</option>
+            <option value="m21">Meta 21 - IRAGP</option>
+            <option value="m22">Meta 22 - IRPJP</option>
+            </select></td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<div ng-switch="myVar">
+<div ng-switch-default="" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 1</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice Mínimo de Capacitação dos Servidores em Competência</span></span></h4>
+<div id="div_grafico_imcsc" class="div_grafico text-center" style="text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">51,85% <br />
+            (ano-base)             </span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">56,85%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">61,85%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">66,85%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">71,85%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">76,85%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m2" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 2</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Desenvolvimento da Competência</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" class="div_grafico" style="text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">90,5%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">96%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">96,5%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">97%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">97,5%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">98%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m3" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 3</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Rotatividade Externa</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" title="Indicador com acompanhamento anual">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">12%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">11,5%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">11%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">10,5%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">10%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">9,5%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<!--Adicionando ICO m4-->
+<div ng-switch-when="m4" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 4</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Clima Organizacional</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">59%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">61%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">63%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<!--Fim ICO 4-->
+<div ng-switch-when="m5" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 5</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Afastamento de Servidores Decorrente de Licença Médica</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">2,99%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">2,99%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">2,99%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">2,97%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">2,97%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">2,97%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m6" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 6</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Satisfação de TI</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" title="Indicador com acompanhamento anual">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">78%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">78%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">78%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">79%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">79%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">79%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m7" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 7</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Mapeamento dos Processos de Trabalho do CSJT</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">15%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">30%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">45%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">60%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">75%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">90%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m8" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 8</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Alinhamento da Comunicação</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" title="Indicador com acompanhamento anual">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">60%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">65%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">70%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">75%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">80%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">90%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m9" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 9</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Implantação do Sistema de Gerenciamento de Custos</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">3%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">5%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">11%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">27%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">46%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">100%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m10" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 10</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Implantação do Sistema de Gestão de Pessoas</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">4%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">20%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">50%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">70%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">90%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">100%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m11" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 11</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Acompanhamento do Crumprimento das Determinações</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">50%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">96%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">97%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">98%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">99%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">100%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m12" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 12</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Conteúdo Replicado Uniformizado</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">50%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">60%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">70%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">80%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">90%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">100%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m13" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 13</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Execução dos Projetos Estratégicos</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">55%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">60%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">65%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">70%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">75%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">80%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m14" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 14</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Recursos Supervisionados</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: small;"><span style="color: rgb(255, 255, 255);">R$ 366.529.899,30 (ano-base)</span></span></td>
+            <td style="text-align: center;"><span style="font-size: small;"><span style="color: rgb(255, 255, 255);">R$ 384.856.394,27&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: small;"><span style="color: rgb(255, 255, 255);">R$ 403.182.889,23&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: small;"><span style="color: rgb(255, 255, 255);">R$ 421.509.384,20&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: small;"><span style="color: rgb(255, 255, 255);">R$ 439.835.879,16&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: small;"><span style="color: rgb(255, 255, 255);">R$ 458.162.374,13</span></span><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m15" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 15</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Cumprimento das Deliberações do CSJT Decorrente de Auditoria</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">50%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">75%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">80%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">85%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">90%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">95%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m16" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 16</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Transparência das Informações</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">50%</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">92%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">95%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">97%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">99%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">100%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m17" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 17</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Satisfação Interna com o Sistema do Processo Judicial Eletrônico</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" title="Indicador com acompanhamento anual">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">26,93% <br />
+            (ano-base)             </span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">31,93%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">36,93%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">41,93%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">46,93%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">51,93%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m18" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 18</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Satisfação Externa com o Sistema do Processo Judicial Eletrônico</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" title="Indicador com acompanhamento anual">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2015</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2016</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">38,41% <br />
+            (ano-base)             </span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">43,41%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">48,41%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">53,41%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">58,41%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">63,41%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m19" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 19</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Agilidade na Liberação dos Acórdãos para Publicação</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none;">&nbsp;</div>
+<div id="div_grafico_ialap" title="Indicador inserido no Plano Estratégico a partir de 2017">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">85%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">90%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">95%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">100%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m20" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 20</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Implantação do Sistema de Gestão Orçamentária</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iisgo" title="Este indicador foi implantado em 2017">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">25%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">62%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">87%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">100%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m21" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 21</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Recolhimento de Acervo de Guarda Permanente</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" title="Este indicador foi implantado em 2017">&nbsp;</div>
+<div id="div_grafico_irpjp" style="display: none;">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">3%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">4%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">6%&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">8%&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m22" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 22</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Repercussão dos Produtos Jornalísticos Produzidos</span></span></h4>
+<div id="div_grafico_imcsc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_idc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ire" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iafast" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_imp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iac" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ico" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgc" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iisgp" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacd" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icru" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iexpe" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_irs" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_icda" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iti" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isipje" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_isepje" style="display: none;">&nbsp;</div>
+<div id="div_grafico_ialap" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iisgo" style="display: none;">&nbsp;</div>
+<div id="div_grafico_iragp" style="display: none;">&nbsp;</div>
+<div id="div_grafico_irpjp" title="Este indicador foi implantado em 2017">&nbsp;</div>
+<div id="spinner" style="display: none; class=">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Metas 2015 - 2020</span></span></h3>
+<table class="tabela" width="90%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr class="titulo-tabela">
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">&nbsp;2017</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2018</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2019</span></span></td>
+            <td style="text-align: center;"><span style="color: rgb(255, 255, 255);"><span style="font-size: larger;">2020&nbsp;</span></span></td>
+        </tr>
+        <tr class="valor-ano-tabela">
+            <td style="text-align: center;">&nbsp;<span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">1.446.409&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">1.475.338&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">1.504.266&nbsp;</span></span></td>
+            <td style="text-align: center;"><span style="font-size: larger;"><span style="color: rgb(255, 255, 255);">1.533.194&nbsp;</span></span></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+<!--fim do ng-switch--></div>
+<!--fim do ng-app-->
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script> <script type="text/javascript">
+	function scrollWin() {
+		window.scrollTo(0, 310);
+	}
+	function ocultarSpinner(){
+		document.getElementById("spinner").style.display = "none";
+		document.getElementById("ajuste").style.display = "none";
+	}
+	function mostrarGrafico(){
+		document.getElementById("div_grafico_imcsc").style.display = "block";
+	}
+</script>
+    
+    
+    
+    </body>
+
+</html>

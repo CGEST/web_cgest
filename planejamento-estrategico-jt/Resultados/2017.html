@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script type="text/javascript">
+window.onload = function() {
+	document.getElementById("div_grafico_igovpessoas").style.display = "none";
+	document.getElementById("barraInicialGlobal").style.display = "none";
+	setTimeout(function(){
+		scrollWin();
+	}, 600);
+	setTimeout(function(){
+		ocultarSpinner();
+		mostrarGrafico();
+		mostrarBarras();
+	}, 2000);
+}
+</script> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <script type="text/javascript"
+src="http://www.csjt.jus.br/c/document_library/get_file?uuid=791538b7-7859-4e8e-9c32-5bdbdf6cdb93&groupId=5625802"></script>
+<p><style type="text/css">
+        .bloco-grafico {
+            width: 800px;
+            height: 1260px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .titulo-grafico {
+            background: transparent !important;
+            color: #696969 !important;
+        }
+
+        h4.subtitulo {
+            margin-top: 20px;
+            margin-bottom: -15px;
+            position: relative;
+            z-index: 999999;
+        }
+
+        .tabela {
+            margin-top: 25px;
+        }
+
+        .tabela td {
+            padding: 10px;
+        }
+
+        .titulo-tabela {
+            background: #412C34;
+        }
+
+        .valor-ano-tabela {
+            background: #22293A;
+            border-top: 1px solid #fff;
+        }
+
+        .select {
+            padding: 7.5px;
+            padding-left: 25%;
+            font-size: 12pt;
+            color: #333;
+            border: 1px solid #DEDEDE;
+            width: 100%;
+            background: #f2f2f2;
+        }
+
+        option {
+            color: #696969;
+        }
+
+        select:required:invalid {
+            color: gray;
+        }
+
+        option[value=""][disabled] {
+            display: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #f3f3f3;
+            border-top: 3px solid #333333;
+            border-radius: 100%;
+            animation: spin 0.8s infinite linear;
+
+            margin: 0 auto;
+            margin-top: 70px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #barraInicial {
+            margin-left: 285px;
+        }
+
+        #barraIntermediario {
+            margin-left: 440px;
+        }
+
+        .barraFaixa {
+            width: 2px;
+            margin-top: 30px;
+            height: 1290px;
+            background: #313B46;
+            position: absolute;
+            z-index: 9999999;
+            Opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        .barraFaixa: hover {
+            box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .titulo-faixa {
+            color: #313B46;
+            position: absolute;
+            font-size: 12px;
+            z-index: 9999999;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #tituloInicial {
+            margin-left: 160px;
+        }
+
+        #tituloIntermediario {
+            margin-left: 325px;
+        }
+
+        #tituloAprimorado {
+            margin-left: 482px;
+        }
+
+        #tabelaFaixas {
+            width: 300px;
+            height: 115px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+    </style></p>
+<div ng-app="">
+<p style="text-align: center;">&nbsp;<strong><span style="color: rgb(49, 59, 70);"><span style="font-size: x-large;">Resultados dos Indicadores</span></span></strong></p>
+<table width="251" border="0" cellpadding="0" cellspacing="0" align="center">
+    <tbody>
+        <tr>
+            <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=24f8be69-8844-477f-ab59-707af5c7e024&amp;groupId=5625802&amp;t=1497614975501" width="252" height="35" alt="" /></td>
+        </tr>
+        <tr>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2015"><img src="/image/image_gallery?uuid=75b9bbd8-6e97-4c41-9cdd-06f70e7c5b92&amp;groupId=5625802&amp;t=1497881106799" width="84" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2016"><img src="/image/image_gallery?uuid=97f007c4-2a10-48c4-9151-2d71a6864a32&amp;groupId=5625802&amp;t=1497882698635" width="84" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados"><img src="/image/image_gallery?uuid=2e5490ba-b8e0-4960-abf8-c4b1612d4592&amp;groupId=5625802&amp;t=1497882698636" width="84" height="35" alt="" /></a></td>
+        </tr>
+        <tr>
+            <td style="text-align: center;" colspan="3"><select class="select" ng-model="myVar" onclick="drawGrafico(); ocultarSpinner();">
+            <option value="" disabled="" selected="">Meta 1 - iGovPessoas</option>
+            <option value="m1">Meta 1 - iGovPessoas</option>
+            <option value="m2">Meta 2 - IEOD</option>
+            <option value="m4">Meta 4 - TMDP2</option>
+            <option value="m5">Meta 5 - TMDP1c</option>
+            <option value="m6">Meta 6 - IPJ</option>
+            <option value="m7">Meta 7 - IPA</option>
+            <option value="m81">Meta 8 - IACJ1</option>
+            <option value="m82">Meta 8 - IACJ2</option>
+            <option value="m9">Meta 9 - ICONc</option>
+            <option value="m10">Meta 10 - IRA</option>
+            <option value="m11">Meta 11 - IE</option>
+            <option value="m13">Meta 13 - IAM</option>
+            </select></td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div ng-switch="myVar">
+<div ng-switch-default="" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 1</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">iGovPessoas</span></span></h4>
+<p>&nbsp;</p>
+<p><em>2&ordm; Levantamento de Governança e Gestão de Pessoas - Ciclo 2016</em></p>
+<div id="barraInicialGlobal">
+<p class="titulo-faixa" id="tituloInicial">Inicial</p>
+<div class="barraFaixa" id="barraInicial">&nbsp;</div>
+<p class="titulo-faixa" id="tituloIntermediario">Intermediário</p>
+<div class="barraFaixa" id="barraIntermediario">&nbsp;</div>
+<p class="titulo-faixa" id="tituloAprimorado">Aprimorado</p>
+</div>
+<div id="div_grafico_igovpessoas">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner">&nbsp;</div>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Nota: a meta prevista para 2016 teve seu resultado divulgado apenas em 2017 pelo TCU, de modo que o valor realizado foi computado em 2017 para compor o IAM desse exercício.</p>
+<p>&nbsp;</p>
+<table id="tabelaFaixas" width="300" border="1" cellpadding="1" cellspacing="1" align="center" height="100">
+    <tbody>
+        <tr style="background: #313B46; color: #fff;">
+            <td colspan="3" style="text-align: center;"><strong>Faixas (%)</strong></td>
+        </tr>
+        <tr>
+            <td><span style="color: rgb(49, 59, 70);"><strong>Inicial</strong></span></td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">39,99</td>
+        </tr>
+        <tr>
+            <td><span style="color: rgb(49, 59, 70);"><strong>Intermediário</strong></span></td>
+            <td style="text-align: center;">40</td>
+            <td style="text-align: center;">70</td>
+        </tr>
+        <tr>
+            <td><span style="color: rgb(49, 59, 70);"><strong>Aprimorado</strong></span></td>
+            <td style="text-align: center;">70,01</td>
+            <td style="text-align: center;">100</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div ng-switch-when="m2" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 2</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Execução do Orçamento Disponibilizado</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+</div>
+<div ng-switch-when="m4" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 4</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Tempo Médio de Duração do Processo - 2&ordf; Instância (dias)</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: 1) valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+<p style="margin-left: 62px; text-align: justify;">2) TMDP2 com valor igual ou inferior a 156 dias, a meta considerar-se-á cumprida.</p>
+</div>
+<div ng-switch-when="m5" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 5</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Tempo Médio de Duração do Processo - Fase de Conhecimento 1&ordf; Instância (dias)</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: 1) valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+<p style="margin-left: 62px; text-align: justify;">2) TMDP1c com valor igual ou inferior a 148 dias, a meta considerar-se-á cumprida.</p>
+</div>
+<div ng-switch-when="m6" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 6</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Processos Julgados</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+</div>
+<div ng-switch-when="m7" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 7</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Processos Antigos</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: 1) valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+<p style="margin-left: 62px; text-align: justify;">2) O valor previsto mensal considera apenas o resíduo a ser julgado para alcançar a meta, enquanto o valor previsto para o acumulado corresponde ao percentual de processos da meta julgado até 2016, somado ao valor previsto mensal acumulado.</p>
+<p style="margin-left: 62px; text-align: justify;">3) Os dados do TRT da 21&ordf; Região apresentam inconsistência.</p>
+</div>
+<div ng-switch-when="m81" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 8</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Ações Coletivas Julgadas - 1&ordm; grau</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: 1) valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+<p style="margin-left: 62px; text-align: justify;">2) O valor previsto mensal considera apenas o resíduo a ser julgado para alcançar a meta, enquanto o valor previsto para o acumulado corresponde ao percentual de processos da meta julgado até 2016, somado ao valor previsto mensal acumulado</p>
+<p style="margin-left: 62px; text-align: justify;">3) Os dados do TRT da 17&ordf; Região apresentam inconsistência.</p>
+</div>
+<div ng-switch-when="m82" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 8</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Ações Coletivas Julgadas - 2&ordm; grau</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: 1) valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+<p style="margin-left: 62px; text-align: justify;">2) O valor previsto mensal considera apenas o resíduo a ser julgado para alcançar a meta, enquanto o valor previsto para o acumulado corresponde ao percentual de processos da meta julgado até 2016, somado ao valor previsto mensal acumulado.</p>
+<p style="margin-left: 62px; text-align: justify;">3) Os dados do TRT da 17&ordf; Região apresentam inconsistência.</p>
+</div>
+<div ng-switch-when="m9" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 9</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Conciliação - Fase de Conhecimento</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: 1) Valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+<p style="margin-left: 62px; text-align: justify;">2) Índice de Conciliação com valor igual ou superior a 54%, a meta considerar-se-á cumprida.</p>
+</div>
+<div ng-switch-when="m10" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 10</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Redução do Acervo dos Maiores Litigantes</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+</div>
+<div ng-switch-when="m11" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 11</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Execução</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie">&nbsp;</div>
+<div id="div_grafico_iam" style="display: none">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+</div>
+<div ng-switch-when="m13" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 13</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Alcance das Metas (pontos)</span></span></h4>
+<div id="div_grafico_igovpessoas" style="display: none">&nbsp;</div>
+<div id="div_grafico_ieod" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display: none">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipj" style="display: none">&nbsp;</div>
+<div id="div_grafico_ipa" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display: none">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display: none">&nbsp;</div>
+<div id="div_grafico_iconc" style="display: none">&nbsp;</div>
+<div id="div_grafico_ira" style="display: none">&nbsp;</div>
+<div id="div_grafico_ie" style="display: none">&nbsp;</div>
+<div id="div_grafico_iam">&nbsp;</div>
+<div class="spinner" id="spinner" style="display: none">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify; margin-left: 15px;">Notas: 1) Os valores extraídos do Sistema de Gestão Estratégica da Justiça do Trabalho (Sigest) no dia 05/02/2018.</p>
+<p style="margin-left: 62px; text-align: justify;">2) A pontuação apresentada considera, também, os indicadores iGovTI e iGovPessoas.</p>
+<p style="margin-left: 62px; text-align: justify;">3) A meta de atingir e manter pontuação entre 60 e 75 pontos desconsidera o iGov</p>
+</div>
+</div>
+<!--fim do ng-switch--></div>
+<!--fim do ng-app-->
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script> <script type="text/javascript">
+    function scrollWin() {
+        window.scrollTo(0, 310);
+    }
+
+    function ocultarSpinner() {
+        document.getElementById("spinner").style.display = "none";
+    }
+
+    function mostrarGrafico() {
+
+        document.getElementById('div_grafico_igovpessoas').style.display = "block";
+
+    }
+
+    function mostrarBarras() {
+
+        document.getElementById('barraInicialGlobal').style.display = "none";
+
+        setTimeout(function() {
+            document.getElementById("barraInicialGlobal").style.display = "block";
+        }, 500);
+    }
+
+</script>
+    </body>
+
+</html>
