@@ -17,7 +17,9 @@ window.onload = function() {
 		mostrarGrafico();
 	}, 2000);
 }
-</script> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  <script type="text/javascript" src="http://www.csjt.jus.br//c/document_library/get_file?uuid=fb8e46a7-fe84-4af1-b2fe-df113aa2cb26&groupId=5625802"></script>
+</script> 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
+<script type="text/javascript" src="/c/document_library/get_file?uuid=fb8e46a7-fe84-4af1-b2fe-df113aa2cb26&groupId=5625802"></script>
 <p><style type="text/css">
 	.bloco-grafico{
 		width: 800px;
@@ -83,20 +85,28 @@ option[value=""][disabled] {
 	} to{
 		transform: rotate(360deg);
 	}
+	}
 }
 </style></p>
 <div ng-app="">
 <p style="text-align: center;">&nbsp;<strong><span style="color: rgb(49, 59, 70);"><span style="font-size: x-large;">Resultados dos Indicadores</span></span></strong></p>
 <table width="251" border="0" cellpadding="0" cellspacing="0" align="center">
     <tbody>
-        <tr>
-            <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=24f8be69-8844-477f-ab59-707af5c7e024&amp;groupId=5625802&amp;t=1497614975501" width="252" height="35" alt="" /></td>
-        </tr>
-        <tr>
-            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2015"><img src="/image/image_gallery?uuid=c096140a-8b00-4eca-a04b-af572a0fd2d5&amp;groupId=5625802&amp;t=1497709652645" width="84" height="35" alt="" /></a></td>
-            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2016"><img src="/image/image_gallery?uuid=97f007c4-2a10-48c4-9151-2d71a6864a32&amp;groupId=5625802&amp;t=1497709652658" width="84" height="35" alt="" /></a></td>
-            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados"><img src="/image/image_gallery?uuid=3606a5e2-abf0-411e-b22b-12fdde1036c1&amp;groupId=5625802&amp;t=1497709652669" width="84" height="35" alt="" /></a></td>
-        </tr>
+        <tbody>
+                <tr>
+                    <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=24f8be69-8844-477f-ab59-707af5c7e024&amp;groupId=5625802&amp;t=1497614975501" width="252" height="35" alt="" /></td>
+                    <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=116f02c0-b00d-4c4d-bead-d1d7976bbfea&groupId=5625802&t=1522691678624" width="252" height="35" alt="" style="margin-left:10px" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2015"><img src="/image/image_gallery?uuid=c096140a-8b00-4eca-a04b-af572a0fd2d5&groupId=5625802&t=1522691678216" width="84" height="35" alt="" /></a></td>
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2016"><img src="/image/image_gallery?uuid=97f007c4-2a10-48c4-9151-2d71a6864a32&amp;groupId=5625802&amp;t=1497882698635" width="84" height="35" alt="" /></a></td>
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados"><img src="/image/image_gallery?uuid=3606a5e2-abf0-411e-b22b-12fdde1036c1&groupId=5625802&t=1522084093006" width="84" height="35" alt="" /></a></td>
+
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/visao-da-jt/anos-anteriores"><img src="http://www.csjt.jus.br/image/image_gallery?uuid=e99a1b13-844c-46d0-a73f-e9aaa56e5579&groupId=5625802&t=1522183915778" width="126" height="35" alt="" style="margin-left:10px" /></a></td>                 
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/visao-da-jt/ano-atual"><img src="http://www.csjt.jus.br/image/image_gallery?uuid=790e269e-d815-459e-a9fe-94598e3d5d57&groupId=5625802&t=1522691310552" width="126" height="35" alt="" /></a></td>
+                </tr>
+            
+            
         <tr>
             <td style="text-align: center;" colspan="3"><select class="select" ng-model="myVar" onclick="drawGrafico(); ocultarSpinner();">
             <option value="" disabled="" selected="">Meta 2 - IEOD</option>
