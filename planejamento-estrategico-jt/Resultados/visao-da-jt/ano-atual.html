@@ -1,0 +1,569 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById("div_grafico_gauges").style.display = "none";
+            setTimeout(function() {
+                scrollWin();
+            }, 600);
+            setTimeout(function() {
+                ocultarSpinner();
+                drawChart();
+                mostrarGrafico();
+            }, 2000);
+        }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+// Função que carrega a API // IGNORAR
+//----------------------------------------------------
+        google.charts.load('current', {
+            'packages': ['gauge']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+//Função geral de erro na query // IGNORAR 
+//---------------------------------------------------------------------------------------------------------------------
+function handleQueryErro(response) {
+    return alert("Error in query: " + response.getMessage() + " " + response.getDetailedMessage());
+}
+//---------------------------------------------------------------------------------------------------------------------
+//Função chamada no html - Serve para enviar os dados de cada gráfico e executar as funções individuais desses.
+//---------------------------------------------------------------------------------------------------------------------
+function drawChart() {
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK2:BL3&Sheet=Sheet1&headers=1").send(handleQueryResponse2);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK3:BL4&Sheet=Sheet1&headers=1").send(handleQueryResponse4);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK4:BL5&Sheet=Sheet1&headers=1").send(handleQueryResponse5);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK5:BL6&Sheet=Sheet1&headers=1").send(handleQueryResponse6);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK6:BL7&Sheet=Sheet1&headers=1").send(handleQueryResponse7);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK7:BL8&Sheet=Sheet1&headers=1").send(handleQueryResponse81);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK8:BL9&Sheet=Sheet1&headers=1").send(handleQueryResponse82);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK9:BL10&Sheet=Sheet1&headers=1").send(handleQueryResponse9);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK10:BL11&Sheet=Sheet1&headers=1").send(handleQueryResponse10);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK11:BL12&Sheet=Sheet1&headers=1").send(handleQueryResponse11);
+    new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=BK12:BL13&Sheet=Sheet1&headers=1").send(handleQueryResponse13);
+
+
+}
+//---------------------------------------------------------------------------------------------------------------------
+// Parametros para os graficos que são crescente de 0 a 100 
+var options1 = {
+    width: 130,
+    height: 130,
+    min: 0,
+    max: 100,
+    redFrom: 0,
+    redTo: 89.9,
+    redColor: "#BA1718",
+    yellowFrom: 90,
+    yellowTo: 99.9,
+    yellowColor: "#EAB200",
+    greenFrom: 100,
+    greenTo: 110,
+    greenColor: "#77933C",
+    minorTicks: 5,
+     setAtualiza: function(e){
+        this.redTo = (e*0.8999999999);
+        this.yellowFrom = (e*.90);
+        this.yellowTo = (e*0.999999999);
+        this.greenFrom = (e*1);        
+    }
+};
+// Parametros para os graficos que são decrescente de 100 a 300 
+var options2 = {
+    width: 130,
+    height: 130,
+    min: 100,
+    max: 300,
+    redFrom: 250,
+    redTo: 300,
+    redColor: "#BA1718",
+    yellowFrom: 200,    
+    yellowTo: 249.99,
+    yellowColor: "#EAB200",
+    greenFrom: 100,
+    greenTo: 199.99,
+    greenColor: "#77933C",
+    minorTicks: 10,
+    setAtualiza: function(e){
+        this.redFrom = (e*1.20);        
+        this.yellowFrom = (e*1.00000000000001);
+        this.yellowTo = (e*1.19999999);        
+        this.greenTo = e*1;
+    }
+};
+//---------------------------------------------------------------------------------------------------------------------
+//Função para definir o numero que o ponteiro vai apontar para cada velocimentro(gauge) // IGNORAR
+function numeroPonteiro(e) {
+    return parseInt(e.J.og["0"].c[1].f); // variavel que indica qual numero o ponteiro deve indicar automaticamente 
+}
+
+// META 2 - IEOD
+function handleQueryResponse2(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    } 
+    
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+   
+    options1.setAtualiza(64);    
+    
+    var d = new google.visualization.Gauge(document.getElementById('div_ieod')); // diz onde é para aparecer o grafico
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico                                    
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options1.setAtualiza(64);
+        d.draw(dt,options1);
+    }, 500);
+}
+
+// META 4 - Tmdcp 1c
+function handleQueryResponse4(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+    
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+   
+    options2.setAtualiza(233);
+
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_tmdp1c')); // diz onde é para aparecer o grafico
+    d.draw(dv, options2); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+    
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+         options2.setAtualiza(233);
+        d.draw(dt, options2);
+    }, 1500);
+}
+
+// META 5 - Tmdcp 2
+function handleQueryResponse5(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }    
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+   
+    options2.setAtualiza(214);    
+
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_tmdp2')); // diz onde é para aparecer o grafico   
+    d.draw(dv, options2); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options2.setAtualiza(214);
+        d.draw(dt, options2);
+    }, 1000);
+}
+
+// META 6 - IPJ
+function handleQueryResponse6(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+    
+    options1.setAtualiza(90);
+
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_ipj')); // diz onde é para aparecer o grafico
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+       options1.setAtualiza(90);
+        d.draw(dt, options1);
+    }, 2000);
+}
+
+// META 7- IPA
+function handleQueryResponse7(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+    
+    options1.setAtualiza(90);    
+
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_ipa')); // diz onde é para aparecer o grafico
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options1.setAtualiza(90);
+        d.draw(dt, options1);
+    }, 2500);
+}
+
+// META 8.1 - IACJ 1
+function handleQueryResponse81(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+    
+    options1.setAtualiza(98);    
+    
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_iacj1')); // diz onde é para aparecer o grafico
+    dt.setValue(0, 1, 0);
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options1.setAtualiza(98);
+        d.draw(dt, options1);
+    }, 3000);
+}
+
+// META 8.2 - IACJ 2
+function handleQueryResponse82(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+    
+     options1.setAtualiza(98);
+    
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_iacj2')); // diz onde é para aparecer o grafico
+    dt.setValue(0, 1, 0);
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options1.setAtualiza(98);
+        d.draw(dt, options1);
+    }, 3500);
+}
+
+// META 9 - ICONc
+function handleQueryResponse9(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.    
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+    
+    options1.setAtualiza(48.72);
+    
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_iconc')); // diz onde é para aparecer o grafico
+    dt.setValue(0, 1, 0);
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico    
+    
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options1.setAtualiza(48.72);
+        d.draw(dt, options1);
+    },4000);
+}
+
+// META 10 - IRA
+function handleQueryResponse10(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+    
+   options1.setAtualiza(100);
+
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_ira')); // diz onde é para aparecer o grafico
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options1.setAtualiza(100);
+        d.draw(dt, options1);
+    }, 4500);
+}
+
+// META 11 - IE
+function handleQueryResponse11(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only
+    
+    options1.setAtualiza(90);
+
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_ie')); // diz onde é para aparecer o grafico
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options1.setAtualiza(90);
+        d.draw(dt, options1);
+    }, 5000);
+}
+
+// META 13 - IAM
+function handleQueryResponse13(response) {
+    if (response.isError()) {
+        handleQueryErro(response);
+    }
+    var dt = response.getDataTable(); //Returns the data table as returned by the data source. Returns null if the query execution failed and no data was returned.
+    dt.setValue(0, 1, 0);
+    var dv = new google.visualization.DataView(dt); //Represents a two-dimensional, mutable table of values, copia da Datable read-only    
+    
+    options1.setAtualiza(55);
+
+    //dt.setValue(9)
+    var d = new google.visualization.Gauge(document.getElementById('div_iam')); // diz onde é para aparecer o grafico
+    d.draw(dv, options1); // desenha o grafico com onde é para desenhar o grafico e o formato do grafico
+
+    setInterval(function () {
+        dt.setValue(0, 1, numeroPonteiro(response));
+        options1.setAtualiza(55);
+        d.draw(dt, options1);
+    }, 5500);
+}
+
+
+    </script>
+    <!-------------------------------------------------- -->
+    <p>
+        <style type="text/css">
+            .linha1 {
+                max-width: 80%;
+                margin-bottom: 0px;
+                margin-left: 100px;
+            }
+
+            .linha2 {
+                max-width: 80%;
+                margin-bottom: 0px;
+                margin-left: 100px;
+            }
+
+            .linha3 {
+                max-width: 80%;
+                margin-bottom: 0px;
+                margin-left: 100px;
+            }
+
+            .linha4 {
+                max-width: 80%;
+                margin-bottom: 0px;
+                margin-left: 100px;
+            }
+
+            .bloco-grafico {
+                max-width: 160px;
+                height: 320px;
+                float: left;
+                margin-left: 10px;
+                text-align: center;
+            }
+
+            .gauge {
+                margin-left: 15px;
+            }
+
+            div#valor-irs {
+                margin: -34px 44441px;
+                position: absolute;
+                z-index: 999999;
+                color: #fff;
+                font-size: 7pt;
+            }
+
+            .desc2linhas {
+                margin-top: 5px;
+                margin-bottom: 63px;
+            }
+
+            .desc3linhas {
+                margin-top: -4px;
+                margin-bottom: 50px;
+            }
+
+            .desc4linhas {
+                margin-top: -10px;
+                margin-bottom: 35px;
+            }
+            .desc5linhas{
+                margin-top: -10px;
+                margin-bottom: 17px;
+            }
+            .desc6linhas{
+                margin-top: -17px;
+                margin-bottom: 5px;
+                
+            }
+
+            .spinner {
+                width: 50px;
+                height: 50px;
+                border: 2px solid #f3f3f3;
+                border-top: 3px solid #333333;
+                border-radius: 100%;
+                animation: spin 0.8s infinite linear;
+
+                margin: 0 auto;
+                margin-top: 70px;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            div#ajuste {
+                height: 922px;
+            }
+        </style>
+    </p>
+    <div ng-app="">
+        <p style="text-align: center;">&nbsp;<strong><span style="color: rgb(49, 59, 70);"><span style="font-size: x-large;">Resultados da JT</span></span></strong></p>
+        <table width="251" border="0" cellpadding="0" cellspacing="0" align="center">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=1ebb6d13-ef20-490f-a9db-6d9414cea465&groupId=5625802&t=1522693832272" width="252" height="35" alt="" /></td>
+                    <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=bf1d8169-a2be-4255-8840-a410c368053f&groupId=5625802&t=1522183409146" width="252" height="35" alt="" style="margin-left:10px" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2015"><img src="/image/image_gallery?uuid=75b9bbd8-6e97-4c41-9cdd-06f70e7c5b92&amp;groupId=5625802&amp;t=1497881106799" width="84" height="35" alt="" /></a></td>
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2016"><img src="/image/image_gallery?uuid=97f007c4-2a10-48c4-9151-2d71a6864a32&amp;groupId=5625802&amp;t=1497882698635" width="84" height="35" alt="" /></a></td>
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados"><img src="/image/image_gallery?uuid=3606a5e2-abf0-411e-b22b-12fdde1036c1&groupId=5625802&t=1522084093006" width="84" height="35" alt="" /></a></td>
+
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/visao-da-jt/anos-anteriores"><img src="/image/image_gallery?uuid=e99a1b13-844c-46d0-a73f-e9aaa56e5579&groupId=5625802&t=1522183915778" width="126" height="35" alt="" style="margin-left:10px" /></a></td>                 
+                    <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/visao-da-jt/ano-atual"><img src="/image/image_gallery?uuid=81f69d87-ea33-4487-8a95-c3b9285009af&groupId=5625802&t=1522183946324" width="126" height="35" alt="" /></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="spinner" class="spinner">&nbsp;</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <div id="div_grafico_gauges">
+            <div class="linha1">
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M2 - IEOD</strong></p>
+                    <p class="desc2linhas"> Alcançar 64,07% de execução do orçamento.</p>
+                    <div class="gauge" id="div_ieod">&nbsp;</div>
+                </div>
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M4 - TMDP2</strong></p>
+                    <p class="desc4linhas" align=just> Reduzir o tempo médio de duração do processo - 2° instância para 233 dias.</p>
+                    <div class="gauge" id="div_tmdp2">&nbsp;</div>
+                </div>
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M5 - TMDP1c</strong></p>
+                    <p class="desc5linhas"> Reduzir o tempo médio de duração do processo - fase de conhecimento - 1° instância para 214 dias. </p>
+                    <div class="gauge" id="div_tmdp1c" title="Indicador avaliado em 6 fatores">&nbsp;</div>
+                </div>
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M6 - IPJ</strong></p>
+                    <p class="desc6linhas" align ="center"> Julgar pelo menos 90% da quantidade dos processos de conhecimento distribuídos no ano corrente. </p>
+                    <div class="gauge" id="div_ipj">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="linha2" >                
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M7 - IPA</strong></p>
+                    <p class="desc5linhas"> Identificar e julgar pelo menos 90% dos processos distribuídos até 31/12/2015, 1&ordm; e 2&ordm; graus.</p>
+                    <div class="gauge" id="div_ipa">&nbsp;</div>
+                </div>
+                <div class="bloco-grafico">
+                    <p class="titulo">&nbsp;<strong>M8.1 - IACJ 1</strong></p>
+                    <p class="desc4linhas">Identificar e julgar, 98% das ações coletivas distribuídas no 1&ordm; grau até 31/12/2014.</p>
+                    <div class="gauge" title="Em 2015 não existia o indicador" id="div_iacj1">&nbsp;</div>
+                </div>
+                <div class="bloco-grafico">
+                    <p class="titulo">&nbsp;<strong>M8.2 - IACJ 2</strong></p>
+                    <p class="desc4linhas">Identificar e julgar, 98% das ações coletivas distribuídas no 2&ordm; grau até 31/12/2015.</p>
+                    <div class="gauge" title="Em 2015 não existia o indicador" id="div_iacj2">&nbsp;</div>
+                </div>
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M9 - ICONc</strong></p>
+                    <p class="desc3linhas">Alcançar 50,72% no Índice de Conciliação na Fase de Conhecimento.* </p>
+                    <div class="gauge" id="div_iconc">&nbsp;</div>
+                </div>                
+            </div>
+            <div class="linha3">
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M10 - IRA</strong></p>
+                    <p class="desc5linhas">Identificar e reduzir em 2% o acervo dos dez maiores litigantes em relação ao ano de 2016.* </p>
+                    <div class="gauge" id="div_ira">&nbsp;</div>
+                </div>
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M11 - IE</strong></p>
+                    <p class="desc4linhas">Baixar pelo menos 90% da quantidade de casos novos de execução iniciada no ano corrente. </p>
+                    <div class="gauge" id="div_ie">&nbsp;</div>
+                </div>
+                <div class="bloco-grafico">
+                    <p class="titulo"><strong>M13 - IAM</strong></p>
+                    <p class="desc3linhas">Atingir e manter pontuação entre 60 e 75 em 2017.</p>
+                    <div class="gauge" id="div_iam">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+            <!-- fim da linha 3 -->
+        </div>
+        <p>&nbsp;</p>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script type="text/javascript">
+            function scrollWin() {
+                window.scrollTo(0, 310);
+            }
+
+            function ocultarSpinner() {
+                document.getElementById("spinner").style.display = "none";
+            }
+
+            function mostrarGrafico() {
+                document.getElementById("div_grafico_gauges").style.display = "block";
+            }
+        </script>
+
+
+
+
+
+    
+</body>
+
+</html>
