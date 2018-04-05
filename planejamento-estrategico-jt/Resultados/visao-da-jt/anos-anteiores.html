@@ -1,0 +1,807 @@
+<script type="text/javascript">
+        window.onload = function() {
+            document.getElementById("div_grafico_ieod").style.display = "none";
+            setTimeout(function() {
+                scrollWin();
+            }, 600);
+            setTimeout(function() {
+                ocultarSpinner();
+                mostrarGrafico();
+                drawGraficos();
+            }, 2000);
+        }
+    </script>     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     <script type="text/javascript">
+        google.charts.load("current", {
+            packages: ['corechart']
+        });
+        google.charts.load('current', {
+            'packages': ['bar']
+        });
+
+        google.charts.setOnLoadCallback(drawGraficos);
+
+
+        function handleQueryErro(response) {
+            return null;
+        }
+        var options = {
+            title: '',
+            titlePosition: 'out',
+            titleTextStyle: {
+                color: '#333',
+                fontSize: 18,
+                bold: false
+            },
+            width: 750,
+            height: 350,
+
+            bar: {
+                groupWidth: '75%'
+            },
+            backgroundColor: '#fff', // cor de fundo
+            colors: ['#5b5b5b', '#22497e'], //cor das colunas
+
+            legend: {
+                position: 'bottom',
+                alignment: 'center',
+                textStyle: {
+                    fontSize: 15
+                }
+            },
+            tooltip: {
+                textStyle: {
+                    fontSize: 15
+                }
+            },
+            fontSize: 13,
+            vAxis: {
+                baseline: 0,
+                baselineColor: '#51565a',
+                gridlines: {
+                    color: 'transparent'
+                },
+                textPosition: 'none'
+            },
+        };
+
+        function drawGraficos() {
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B14:D17&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse2);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B18:D21&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse4);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B22:D25&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse5);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B26:D29&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse6);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B30:D33&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse7);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B34:D37&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse81);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B38:D41&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse82);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B42:D45&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse9);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B46:D49&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse10);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B50:D53&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse11);
+            new google.visualization.Query("https://docs.google.com/spreadsheets/d/11GhhMrk8SWHH_BPJa0yW3bsbmPuCgSmrekoBuHoIrF4/gviz/tq?range=B54:D57&Sheet=Sheet1&gid=1384541820").send(handleQueryResponse13);
+        }
+
+        function handleQueryResponse2(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_ieod"));
+            chart.draw(view, options);
+        };
+
+
+
+
+        function handleQueryResponse4(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_tmdp1c"));
+            chart.draw(view, options);
+        };
+
+
+        function handleQueryResponse5(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_tmdp2"));
+            chart.draw(view, options);
+        };
+
+        function handleQueryResponse6(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_ipj"));
+            chart.draw(view, options);
+
+        }
+
+        function handleQueryResponse7(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_ipa"));
+            chart.draw(view, options);
+
+        }
+
+        function handleQueryResponse81(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_iacj1"));
+            chart.draw(view, options);
+
+        }
+
+        function handleQueryResponse82(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_iacj2"));
+            chart.draw(view, options);
+
+        }
+
+        function handleQueryResponse9(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_iconc"));
+            chart.draw(view, options);
+
+        }
+
+        function handleQueryResponse10(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_ira"));
+            chart.draw(view, options);
+
+        }
+
+        function handleQueryResponse11(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_ie"));
+            chart.draw(view, options);
+
+        }
+
+        function handleQueryResponse13(response) {
+
+            if (response.isError()) {
+                handleQueryErro(response);
+            }
+
+            var data = response.getDataTable();
+            var view = new google.visualization.DataView(data);
+
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2,
+                {
+                    calc: "stringify",
+                    sourceColumn: 2,
+                    type: "string",
+                    role: "annotation"
+                }
+            ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById("div_grafico_iam"));
+            chart.draw(view, options);
+
+        }
+    </script>
+<p><style type="text/css">
+            .bloco-grafico {
+                width: 750px;
+                height: 350px;
+                text-align: center;
+                margin: auto;
+            }
+
+            .titulo-grafico {
+                background: transparent !important;
+                color: #696969 !important;
+            }
+
+            h4.subtitulo {
+                margin-top: 20px;
+                margin-bottom: -15px;
+                position: relative;
+                z-index: 999999;
+            }
+
+            .tabela {
+                margin-top: 25px;
+            }
+
+            .tabela td {
+                padding: 10px;
+            }
+
+            .titulo-tabela {
+                background: #5b5b5b;
+            }
+
+            .valor-ano-tabela {
+                background: #22293A;
+                border-top: 1px solid #333;
+            }
+
+            .select{
+		            padding: 7.5px 4.5px 8.5px 25%;
+		            margin-top: -1px;
+                    margin-left: 10px;
+    		        font-size: 12pt;
+    		        color: #333;
+		            border: 1px solid #DEDEDE;
+		            width: 97%;
+		            background: #f2f2f2;
+	        }
+
+            option {
+                color: #696969;
+            }
+
+            select:required:invalid {
+                color: gray;
+            }
+
+            option[value=""][disabled] {
+                display: none;
+            }
+
+            .spinner {
+                width: 50px;
+                height: 50px;
+                border: 2px solid #f3f3f3;
+                border-top: 3px solid #333333;
+                border-radius: 100%;
+                animation: spin 0.8s infinite linear;
+
+                margin: 0 auto;
+                margin-top: 70px;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            div#ajuste {
+                height: 225px;
+                ;
+            }
+        </style></p>
+<div ng-app="">
+<p style="text-align: center;"><strong><span style="color: rgb(49, 59, 70);"><span style="font-size: x-large;">Resultados dos Indicadores</span></span></strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<table width="260" border="0" cellpadding="1" cellspacing="1" align="center">
+    <tbody>
+        <tr>
+            <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=1ebb6d13-ef20-490f-a9db-6d9414cea465&amp;groupId=5625802&amp;t=1522693832272" width="252" height="35" alt="" /></td>
+            <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=bf1d8169-a2be-4255-8840-a410c368053f&amp;groupId=5625802&amp;t=1522183409146" width="252" height="35" alt="" style="margin-left:10px" /></td>
+        </tr>
+        <tr>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2015"><img src="/image/image_gallery?uuid=75b9bbd8-6e97-4c41-9cdd-06f70e7c5b92&amp;groupId=5625802&amp;t=1497881106799" width="84" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/2016"><img src="/image/image_gallery?uuid=97f007c4-2a10-48c4-9151-2d71a6864a32&amp;groupId=5625802&amp;t=1497882698635" width="84" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados"><img src="/image/image_gallery?uuid=3606a5e2-abf0-411e-b22b-12fdde1036c1&amp;groupId=5625802&amp;t=1522084093006" width="84" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/visao-da-jt/anos-anteriores"><img src="/image/image_gallery?uuid=df37c255-73a2-4732-98d9-8efcc3b3c5b7&amp;groupId=5625802&amp;t=1522951715112" width="126" height="35" alt="" style="margin-left:10px" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-jt/resultados/visao-da-jt/ano-atual"><img src="/image/image_gallery?uuid=790e269e-d815-459e-a9fe-94598e3d5d57&amp;groupId=5625802&amp;t=1522951715130" width="126" height="35" alt="" /></a></td>
+        </tr>
+        <tr>
+            <td rowspan="3" style="text-align: center; padding:10px">&nbsp;</td>
+            <td rowspan="2" style="text-align: center; padding:10px">&nbsp;</td>
+            <td rowspan="2" style="text-align: center; padding:10px">&nbsp;</td>
+        </tr>
+        <tr>
+            <th colspan="2"><select class="select" ng-model="myVar" onclick="drawGraficos(); ocultarSpinner()" onchange="drawGraficos(); ocultarSpinner()">
+            <option value="" disabled="" selected="">Meta 2 - IEOD</option>
+            <option value="m2">Meta 2 - IEOD</option>
+            <option value="m4">Meta 4 - TMDP1c</option>
+            <option value="m5">Meta 5 - TMDP2</option>
+            <option value="m6">Meta 6 - IPJ</option>
+            <option value="m7">Meta 7 - IPA</option>
+            <option value="m81">Meta 8.1 - IACJ 1</option>
+            <option value="m82">Meta 8.2 - IACJ 2</option>
+            <option value="m9">Meta 9 - ICONc</option>
+            <option value="m10">Meta 10 - IRA</option>
+            <option value="m11">Meta 11 - IE</option>
+            <option value="m13">Meta 13 - IAM</option>
+            </select></th>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<div ng-switch="myVar">
+<div ng-switch-default="" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 2</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Execução do Orçamento Disponibilizado</span></span></h4>
+<div id="div_grafico_ieod" class="div_grafico text-center" style="text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m4" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 4</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Tempo Médio de Duração do Processo 2&ordf; Instância</span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" class="div_grafico" style="text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none;  text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m5" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 5</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Tempo Médio de Duração do Processo - 1&ordf; Instância</span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none;text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" class="div_grafico" style=" text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m6" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 6</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Processos Julgados</span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" class="div_grafico" style=" text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m7" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 7</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Processos Antigos</span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" class="div_grafico" style=" text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m81" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 8.1</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Ações Coletivas Julgadas - 1&ordm; Grau
+</span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" class="div_grafico" style=" text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m82" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 8.2</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Ações Coletivas Julgadas - 2&ordm; Grau</span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" class="div_grafico" style=" text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m9" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 9</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Conciliação – Fase de Conhecimento </span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" class="div_grafico" style="text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m10" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 10</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Redução do Acervo dos Maiores Litigantes</span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" class="div_grafico" style=" text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m11" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 11</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Impulsionar as execuções trabalhistas e fiscais</span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" class="div_grafico" style=" text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" style="display:none; text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+<div ng-switch-when="m13" class="bloco-grafico">
+<h3 class="titulo-grafico"><span style="color: rgb(65, 44, 52);"><span style="font-size: x-large;">Meta 13</span></span></h3>
+<h4 class="subtitulo"><span style="color: rgb(43, 72, 71);"><span style="font-size: medium;">Índice de Alcance das Metas </span></span></h4>
+<div id="div_grafico_ieod" style="display: none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp1c" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_tmdp2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipj" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ipa" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj1" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iacj2" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iconc" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ira" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_ie" style="display:none; text-align: left;">&nbsp;</div>
+<div id="div_grafico_iam" class="div_grafico" style=" text-align: left;">&nbsp;</div>
+<div id="spinner" class="spinner">&nbsp;</div>
+<div id="ajuste">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<table>
+    <tbody>
+    </tbody>
+</table>
+</div>
+<!--fim do ng-switch--></div>
+<!--fim do ng-app-->
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>     <script type="text/javascript">
+        function scrollWin() {
+            window.scrollTo(0, 310);
+        }
+
+        function ocultarSpinner() {
+            document.getElementById("spinner").style.display = "none";
+            document.getElementById("ajuste").style.display = "none";
+        }
+
+        function mostrarGrafico() {
+            document.getElementById("div_grafico_ieod").style.display = "block";
+        }
+    </script>
