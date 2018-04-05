@@ -1,0 +1,266 @@
+
+        <script type="text/javascript">
+window.onload = function() {
+	document.getElementById("div_grafico_gauges").style.display = "none";
+	setTimeout(function(){
+		scrollWin();
+	}, 600);
+	setTimeout(function(){
+		ocultarSpinner();
+		drawVisualization();
+		mostrarGrafico();
+	}, 2000);
+}
+</script> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <script type="text/javascript"
+src="http://www.csjt.jus.br/c/document_library/get_file?uuid=913e4b24-84cf-4bd6-83e8-4fa05f10acad&groupId=5625802"></script>
+<p><style type="text/css">
+	.linha1{
+		max-width: 96%;
+		margin-bottom: 10px;
+		margin-left: 30px;
+	}
+	.linha2{
+		max-width: 96%;
+		margin-bottom: 10px;
+		margin-left: 30px;
+	}
+	.linha3{
+		max-width: 96%;
+		margin-bottom: 10px;
+		margin-left: 30px;
+	}.linha4{
+		max-width: 96%;
+		margin-bottom: 10px;
+		margin-left: 30px;
+	}
+	.bloco-grafico{
+		max-width: 160px;
+		height: 270px;
+		float: left;
+		margin-left: 10px;
+		text-align: center;
+	}
+	.gauge{
+		margin-left: 15px;
+	}
+	div#valor-irs{
+		margin: -34px 37px;
+		position: absolute;
+		z-index: 999999;
+		color: #000;
+		font-size: 7pt;
+	}
+	.desc2linhas{
+		margin-top: 15px;
+		margin-bottom: 17px;
+	}
+	.desc3linhas{
+		margin-top: -4px;
+		margin-bottom: 4px;
+	}
+	.desc4linhas{
+		margin-top: -17px;
+		margin-bottom: -5px;		
+	}
+	#div_grafico_gauges{
+		height: 1350px;
+	}
+.spinner {
+	width: 50px;
+	height: 50px;
+	border: 2px solid #f3f3f3;
+	border-top: 3px solid #333333;
+	border-radius: 100%;
+	animation: spin 0.8s infinite linear;
+	
+	margin: 0 auto;
+	margin-top: 70px;
+}
+@keyframes spin {
+	from{
+		transform: rotate(0deg);
+	} to{
+		transform: rotate(360deg);
+	}
+}
+div#ajuste{
+		height: 1050px;
+	}
+</style></p>
+<p style="text-align: center;">&nbsp;<strong><span style="color: rgb(49, 59, 70);"><span style="font-size: x-large;">Resultados dos Indicadores</span></span></strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<div id="filtro12017" style="display: none">&nbsp;</div>
+<div id="filtro22017" style="display: none">&nbsp;</div>
+<div id="filtro32017" style="display: none">&nbsp;</div>
+<div id="filtro42017" style="display: none">&nbsp;</div>
+<div id="filtro52017" style="display: none">&nbsp;</div>
+<div id="filtro62017" style="display: none">&nbsp;</div>
+<div id="filtro72017" style="display: none">&nbsp;</div>
+<div id="filtro82017" style="display: none">&nbsp;</div>
+<div id="filtro92017" style="display: none">&nbsp;</div>
+<div id="filtro102017" style="display: none">&nbsp;</div>
+<div id="filtro112017" style="display: none">&nbsp;</div>
+<div id="filtro122017" style="display: none">&nbsp;</div>
+<div id="filtro132017" style="display: none">&nbsp;</div>
+<div id="filtro142017" style="display: none">&nbsp;</div>
+<div id="filtro152017" style="display: none">&nbsp;</div>
+<div id="filtro162017" style="display: none">&nbsp;</div>
+<div id="filtro172017" style="display: none">&nbsp;</div>
+<div id="filtro182017" style="display: none">&nbsp;</div>
+<div id="filtro192017" style="display: none">&nbsp;</div>
+<div id="filtro202017" style="display: none">&nbsp;</div>
+<div id="filtro212017" style="display: none">&nbsp;</div>
+<div id="filtro222017" style="display: none">&nbsp;</div>
+<table width="251" border="0" cellpadding="1" cellspacing="1" align="center">
+    <tbody>
+        <tr>
+            <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=ed8b6496-11a1-4007-bb87-d64d52016969&amp;groupId=5625802&amp;t=1498048665184" width="250" height="35" alt="" /></td>
+            <td rowspan="2" style="text-align: center; padding:10px">&nbsp;</td>
+            <td rowspan="2" style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/visao-por-meta"><img src="/image/image_gallery?uuid=1485ffdb-dab3-4023-8475-710b5850c4f9&amp;groupId=5625802&amp;t=1496922133039" width="250" height="70" alt="" /></a></td>
+        </tr>
+        <tr>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/2015"><img src="/image/image_gallery?uuid=144670b9-65f2-4220-bf07-0753fd244fd7&amp;groupId=5625802&amp;t=1496922045540" width="83" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/2016"><img src="/image/image_gallery?uuid=f0624775-b22e-4aa0-9a93-6c3d1774c70f&amp;groupId=5625802&amp;t=1496922079147" width="83" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais"><img src="/image/image_gallery?uuid=5f4d9208-8a41-4f1a-8ad0-9da72c2e0e0a&amp;groupId=5625802&amp;t=1496922088714" width="84" height="35" alt="" /></a></td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<div id="spinner" class="spinner">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="ajuste">&nbsp;</div>
+<div id="div_grafico_gauges">
+<div class="linha1">
+<div class="bloco-grafico">
+<p class="titulo"><strong>M1 - IMCSC</strong></p>
+<p class="desc2linhas">Capacitar 61,85% dos servidores</p>
+<div class="gauge" id="div_imcsc2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M2 - IDC</strong></p>
+<p class="desc3linhas">Atender plenamente 96,5% dos servidores capacitados</p>
+<div class="gauge" id="div_idc2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M3 - IRE</strong></p>
+<p class="desc2linhas">Reduzir a rotatividade para 11%</p>
+<div class="gauge" id="div_ire2017" title="Indicador com acompanhamento anual">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M4 - ICO</strong></p>
+<p class="desc3linhas">Alcançar 61% de satisfação na Pesquisa de Clima Organizacional</p>
+<div class="gauge" id="div_ico2017" title="Indicador avaliado em 6 fatores">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M5 - IAFAST</strong></p>
+<p class="desc3linhas">Reduzir para 2,99% o afastamento de servidores</p>
+<div class="gauge" id="div_iafast2017">&nbsp;</div>
+</div>
+</div>
+<div class="linha2">
+<div class="bloco-grafico">
+<p class="titulo"><strong>M6 - ISTI</strong></p>
+<p class="desc2linhas">Obter 78% de satisfação sobre os serviços de TI</p>
+<div class="gauge" id="div_isti2017" title="">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M7 - IMP</strong></p>
+<p class="desc2linhas">Mapear 45% dos processos estratégicos</p>
+<div class="gauge" id="div_imp2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo">&nbsp;<strong>M8 - IAC</strong></p>
+<p class="desc3linhas">Obter 70% do alinhamento da comunicação</p>
+<div class="gauge" title="" id="div_iac2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M9 - IISGC</strong></p>
+<p class="desc3linhas">Implantar o Sistema de Custos em 11% dos TRTs</p>
+<div class="gauge" id="div_iisgc2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M10 - IISGP</strong></p>
+<p class="desc3linhas">Implantar o Sistema de Gestão de Pessoas em 50% dos TRTs</p>
+<div class="gauge" id="div_iisgp2017">&nbsp;</div>
+</div>
+</div>
+<div class="linha3">
+<div class="bloco-grafico">
+<p class="titulo"><strong>M11 - IACD</strong></p>
+<p class="desc3linhas">Contribuir para que 97% das determinações seja cumpridas</p>
+<div class="gauge" id="div_iacd2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M12 - ICRU</strong></p>
+<p class="desc3linhas">Contribuir para a replicação de 70% dos conteúdos obrigatórios</p>
+<div class="gauge" id="div_icru2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M13 - IEXPE</strong></p>
+<p class="desc2linhas">Cumprir 65% dos projetos estratégicos</p>
+<div class="gauge" id="div_iexpe2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M14 - IRS</strong></p>
+<p class="desc2linhas">Supervisionar R$ 403.182.889 de recursos</p>
+<div class="gauge" id="div_irs2017">&nbsp;</div>
+<div id="valor-irs">R$ 1.413.528.771,52</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M15 - ICDA</strong></p>
+<p class="desc4linhas">Contribuir para que 80% das deliberações de auditoria sejam cumpridas</p>
+<div class="gauge" id="div_icda2017">&nbsp;</div>
+</div>
+</div>
+<div class="linha4">
+<div class="bloco-grafico">
+<p class="titulo"><strong>M16 - ITI</strong></p>
+<p class="desc4linhas">Contribuir para a publicação de 95% das informações de Transparência</p>
+<div class="gauge" id="div_iti2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M17 - ISIPJe</strong></p>
+<p class="desc3linhas">Obter 36,93% de satisfação interna com o PJe</p>
+<div class="gauge" id="div_isipje2017" title="Indicador com acompanhamento anual">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M18 - ISEPJe</strong></p>
+<p class="desc3linhas">Obter 48,41% de satisfação externa com o PJe</p>
+<div class="gauge" id="div_isepje2017" title="">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M19 - IALAP</strong></p>
+<p class="desc3linhas">Obter 85% de acórdãos liberados para publicação no prazo</p>
+<div class="gauge" id="div_ialap2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M20 - IISGO</strong></p>
+<p class="desc4linhas">Implantar 25% dos projetos do Sistema de Orçamento e Finanças na JT</p>
+<div class="gauge" id="div_iisgo2017" title="Indicador implantado em 2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M21 - IRAGP</strong></p>
+<p class="desc4linhas">Alcançar 3% de recolhimento de acervo de Guarda Permanente na JT de 1&ordm; e 2&ordm; Graus</p>
+<div class="gauge" id="div_iragp2017" title="Indicador implantado em 2017">&nbsp;</div>
+</div>
+<div class="bloco-grafico">
+<p class="titulo"><strong>M22 - IRPJP</strong></p>
+<p class="desc4linhas">Aumentar 2% ao ano o alcance dos produtos de comunicação referentes ao CSJT</p>
+<div class="gauge" id="div_irpjp2017" title="(ano-base)">&nbsp;</div>
+</div>
+</div>
+<!-- fim da linha4 --></div>
+<p>&nbsp;</p>
+<script type="text/javascript">
+	function scrollWin() {
+		window.scrollTo(0, 310);
+	}
+	function ocultarSpinner(){
+		document.getElementById("spinner").style.display = "none";
+		document.getElementById("ajuste").style.display = "none";
+	}
+	function mostrarGrafico(){
+		document.getElementById("div_grafico_gauges").style.display = "block";
+	}
+</script>
