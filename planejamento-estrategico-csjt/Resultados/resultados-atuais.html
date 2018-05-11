@@ -1,137 +1,1489 @@
-<!DOCTYPE html> 
-<html>
-    <head>
-    
-    </head>
-    
-    <body>
-        <script type="text/javascript">
-window.onload = function() {
-	document.getElementById("div_grafico_gauges").style.display = "none";
-	setTimeout(function(){
-		scrollWin();
-	}, 600);
-	setTimeout(function(){
-		ocultarSpinner();
-		drawVisualization();
-		mostrarGrafico();
-	}, 2000);
-}
-</script> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <script type="text/javascript"
-src="http://www.csjt.jus.br/c/document_library/get_file?uuid=913e4b24-84cf-4bd6-83e8-4fa05f10acad&groupId=5625802"></script>
+<script type="text/javascript">
+        window.onload = function() {
+            document.getElementById("div_grafico_gauges").style.display = "none";
+            setTimeout(function() {
+                scrollWin();
+            }, 600);
+            setTimeout(function() {
+                ocultarSpinner();
+                drawVisualization();
+                mostrarGrafico();
+            }, 2000);
+        }
+    </script>     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     <script type="text/javascript">
+        function drawVisualization() {
+            filtro12018 = DashboardImcsc1(), filtro22018 = DashboardIdc1(), filtro32018 = DashboardIre1(), filtro42018 = DashboardIco1(), filtro52018 = DashboardIafast1(), filtro62018 = DashboardIsti1(), filtro72018 = DashboardImp1(), filtro82018 = DashboardIac1(), filtro92018 = DashboardIisgc1(), filtro102018 = DashboardIisgp1(), filtro112018 = DashboardIacd1(), filtro122018 = DashboardIcru1(), filtro132018 = DashboardIexpe1(), filtro142018 = DashboardIrs1(), filtro152018 = DashboardIcda1(), filtro162018 = DashboardIti1(), filtro172018 = DashboardIsipje1(), filtro182018 = DashboardIsepje1(), filtro192018 = DashboardIalap1(), filtro202018 = DashboardIisgo1(), filtro212018 = DashboardIragp1(), filtro222018 = DashboardIrpjp1()
+        }
+
+        function DashboardImcsc1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado", {
+                        role: "style"
+                    }],
+                    ["2018", "IMCSC", {
+                        v: 0,
+                        f: "-"
+                    }, "style: color: red"]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro12018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_imcsc2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 61.85,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 55.67,
+                        yellowTo: 61.84,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 55.66,
+                        redColor: "#7F7F7F"
+                    },
+                    animation: {
+                        duration: 1e3,
+                        easing: "inAndOut"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IMCSC", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIdc1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IDC", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro22018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_idc2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 96.5,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 86.86,
+                        yellowTo: 96.49,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 86.85,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IDC", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIre1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IRE", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro32018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_ire2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 20,
+                        minorTicks: 10,
+                        greenFrom: 0,
+                        greenTo: 11,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 11.01,
+                        yellowTo: 12.1,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 12.11,
+                        redTo: 20,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IRE", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIco1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2015", "ICO", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro42018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_ico2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 61,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 54.91,
+                        yellowTo: 60.99,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 54.9,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "ICO", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIafast1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IAFAST", {
+                        v: 1,
+                        f: "1%"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro52018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iafast2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 5,
+                        minorTicks: 10,
+                        greenFrom: 0,
+                        greenTo: 2.97,
+                        greenColor: "#77933C",
+                        yellowFrom: 2.98,
+                        yellowTo: 3.27,
+                        yellowColor: "#EAB200",
+                        redFrom: 3.28,
+                        redTo: 5,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IAFAST", {
+                            v: 1.89,
+                            f: "1,89%"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 700), a
+        }
+
+        function DashboardIsti1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "ISTI", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro62018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_isti2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 78,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 70.21,
+                        yellowTo: 77.99,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 70.2,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "ISTI", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardImp1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IMP", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro72018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_imp2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 45,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 40.51,
+                        yellowTo: 44.99,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 40.51,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IMP", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIac1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IAC", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro82018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iac2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 70,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 63.01,
+                        yellowTo: 69.99,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 63,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IAC", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIisgc1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IISGC", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro92018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iisgc2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 11,
+                        greenTo: 100,
+                        greenColor: "#77933C",
+                        yellowFrom: 9.91,
+                        yellowTo: 10.99,
+                        yellowColor: "#EAB200",
+                        redFrom: 0,
+                        redTo: 9.9,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IISGC", {
+                            v: 3.85,
+                            f: "3,85%"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIisgp1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IISGP", {
+                        v: 0,
+                        f: "0%"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro102018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iisgp2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 55,
+                        greenTo: 100,
+                        greenColor: "#77933C",
+                        yellowFrom: 45.01,
+                        yellowTo: 54.99,
+                        yellowColor: "#EAB200",
+                        redFrom: 0,
+                        redTo: 49.49,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IISGP", {
+                            v: 20.83,
+                            f: "20,83%"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIacd1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IACD", {
+                        v: 0,
+                        f: "0%"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro112018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iacd2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 98,
+                        greenTo: 100,
+                        greenColor: "#77933C",
+                        yellowFrom: 88.3,
+                        yellowTo: 97.99,
+                        yellowColor: "#EAB200",
+                        redFrom: 0,
+                        redTo: 88.2,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IACD", {
+                            v: 99.22,
+                            f: "99,22%"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIcru1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "ICRU", {
+                        v: 0,
+                        f: "0%"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro122018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_icru2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 80,
+                        greenTo: 100,
+                        greenColor: "#77933C",
+                        yellowFrom: 72.01,
+                        yellowTo: 79.99,
+                        yellowColor: "#EAB200",
+                        redFrom: 0,
+                        redTo: 72,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "ICRU", {
+                            v: 27.50,
+                            f: "27,50%"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIexpe1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IEXPE", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro132018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iexpe2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 65,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 58.51,
+                        yellowTo: 64.99,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 58.5,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IEXPE", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIrs1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado", {
+                        role: "tooltip"
+                    }],
+                    ["2018", "IRS", {
+                        v: 0,
+                        f: ""
+                    }, ""]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro142018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_irs2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        fontSize: 5,
+                        min: 0,
+                        max: 100000000,
+                        minorTicks: 10,
+                        greenFrom: 50000001,
+                        greenTo: 100000000,
+                        greenColor: "#77933C",
+                        yellowFrom: 45000000.9,
+                        yellowTo: 50000000.99,
+                        yellowColor: "#77933C",
+                        redFrom: 0,
+                        redTo: 45000000.89,
+                        redColor: "#77933C"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado", {
+                            role: "tooltip"
+                        }],
+                        ["2018", "IRS", {
+                            v: 43853748.86,
+                            f: ""
+                        }, ""]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIcda1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "ICDA", {
+                        v: 0,
+                        f: "0%"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro152018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_icda2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 85,
+                        greenTo: 100,
+                        greenColor: "#77933C",
+                        yellowFrom: 76.51,
+                        yellowTo: 84.99,
+                        yellowColor: "#EAB200",
+                        redFrom: 0,
+                        redTo: 76.5,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "ICDA", {
+                            v: 89.83,
+                            f: "89,83%"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIti1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "ITI", {
+                        v: 0,
+                        f: "0%"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro162018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iti2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 97,
+                        greenTo: 100,
+                        greenColor: "#77933C",
+                        yellowFrom: 87.31,
+                        yellowTo: 96.99,
+                        yellowColor: "#EAB200",
+                        redFrom: 0,
+                        redTo: 87.3,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "ITI", {
+                            v: 100,
+                            f: "100%"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIsipje1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "ISIPJe", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro172018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_isipje2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 36.93,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 33.24,
+                        yellowTo: 36.92,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 33.23,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "ISIPJe", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIsepje1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "ISEPJe", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro182018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_isepje2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 48.41,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 33.24,
+                        yellowTo: 48.4,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 33.23,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "ISEPJe", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIalap1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IALAP", {
+                        v: 0,
+                        f: "0%"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro192018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_ialap2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 90,
+                        greenTo: 100,
+                        greenColor: "#77933C",
+                        yellowFrom: 81.01,
+                        yellowTo: 89.99,
+                        yellowColor: "#EAB200",
+                        redFrom: 0,
+                        redTo: 81,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IALAP", {
+                            v: 100,
+                            f: "100%"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIisgo1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IISGO", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro202018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iisgo2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 100,
+                        minorTicks: 10,
+                        greenFrom: 25,
+                        greenTo: 100,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 22.51,
+                        yellowTo: 24.99,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 22.5,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IISGO", {
+                            v: 00,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIragp1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IISGO", {
+                        v: 0,
+                        f: "-"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro212018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_iragp2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 50,
+                        minorTicks: 10,
+                        greenFrom: 3,
+                        greenTo: 50,
+                        greenColor: "#7F7F7F",
+                        yellowFrom: 2.71,
+                        yellowTo: 2.99,
+                        yellowColor: "#7F7F7F",
+                        redFrom: 0,
+                        redTo: 2.7,
+                        redColor: "#7F7F7F"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IRAGP", {
+                            v: 0,
+                            f: "-"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+
+        function DashboardIrpjp1() {
+            var o = new google.visualization.arrayToDataTable([
+                    ["Ano", "Meta", "Realizado"],
+                    ["2018", "IISGO", {
+                        v: 0,
+                        f: "0%"
+                    }]
+                ]),
+                a = new google.visualization.ControlWrapper({
+                    controlType: "CategoryFilter",
+                    containerId: "filtro222018",
+                    options: {
+                        width: 300,
+                        height: 300,
+                        filterColumnLabel: "Ano",
+                        ui: {
+                            label: "Indicador",
+                            labelSeparator: ":",
+                            allowNone: !1,
+                            allowTyping: !1,
+                            allowMultiple: !1,
+                            caption: "procure o indicador",
+                            selectedValuesLayout: "belowStacked"
+                        }
+                    }
+                }),
+                e = new google.visualization.ChartWrapper({
+                    chartType: "Gauge",
+                    containerId: "div_irpjp2018",
+                    options: {
+                        width: 130,
+                        height: 130,
+                        min: 0,
+                        max: 500000,
+                        minorTicks: 10,
+                        greenFrom: 368834.27,
+                        greenTo: 500000,
+                        greenColor: "#77933C",
+                        yellowFrom: 331950.85,
+                        yellowTo: 368834.279,
+                        yellowColor: "#EAB200",
+                        redFrom: 0,
+                        redTo: 331950.849,
+                        redColor: "#BA1718"
+                    }
+                }),
+                r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+            return r.bind(a, e), r.draw(o), setTimeout(function() {
+                var o = new google.visualization.arrayToDataTable([
+                        ["Ano", "Meta", "Realizado"],
+                        ["2018", "IRAGP", {
+                            v: 306081,
+                            f: "306081"
+                        }]
+                    ]),
+                    r = new google.visualization.Dashboard(document.getElementById("dashboard2018"));
+                r.bind(a, e), r.draw(o)
+            }, 500), a
+        }
+        google.charts.load("current", {
+            packages: ["corechart", "controls"]
+        }), google.charts.setOnLoadCallback(drawVisualization);
+    </script>
 <p><style type="text/css">
-	.linha1{
-		max-width: 96%;
-		margin-bottom: 10px;
-		margin-left: 30px;
-	}
-	.linha2{
-		max-width: 96%;
-		margin-bottom: 10px;
-		margin-left: 30px;
-	}
-	.linha3{
-		max-width: 96%;
-		margin-bottom: 10px;
-		margin-left: 30px;
-	}.linha4{
-		max-width: 96%;
-		margin-bottom: 10px;
-		margin-left: 30px;
-	}
-	.bloco-grafico{
-		max-width: 160px;
-		height: 270px;
-		float: left;
-		margin-left: 10px;
-		text-align: center;
-	}
-	.gauge{
-		margin-left: 15px;
-	}
-	div#valor-irs{
-		margin: -34px 37px;
-		position: absolute;
-		z-index: 999999;
-		color: #000;
-		font-size: 7pt;
-	}
-	.desc2linhas{
-		margin-top: 15px;
-		margin-bottom: 17px;
-	}
-	.desc3linhas{
-		margin-top: -4px;
-		margin-bottom: 4px;
-	}
-	.desc4linhas{
-		margin-top: -17px;
-		margin-bottom: -5px;		
-	}
-	#div_grafico_gauges{
-		height: 1350px;
-	}
-.spinner {
-	width: 50px;
-	height: 50px;
-	border: 2px solid #f3f3f3;
-	border-top: 3px solid #333333;
-	border-radius: 100%;
-	animation: spin 0.8s infinite linear;
-	
-	margin: 0 auto;
-	margin-top: 70px;
-}
-@keyframes spin {
-	from{
-		transform: rotate(0deg);
-	} to{
-		transform: rotate(360deg);
-	}
-}
-div#ajuste{
-		height: 1050px;
-	}
-</style></p>
+            .linha1 {
+                max-width: 96%;
+                margin-bottom: 10px;
+                margin-left: 30px;
+            }
+
+            .linha2 {
+                max-width: 96%;
+                margin-bottom: 10px;
+                margin-left: 30px;
+            }
+
+            .linha3 {
+                max-width: 96%;
+                margin-bottom: 10px;
+                margin-left: 30px;
+            }
+
+            .linha4 {
+                max-width: 96%;
+                margin-bottom: 10px;
+                margin-left: 30px;
+            }
+
+            .bloco-grafico {
+                max-width: 160px;
+                height: 270px;
+                float: left;
+                margin-left: 10px;
+                text-align: center;
+            }
+
+            .gauge {
+                margin-left: 15px;
+            }
+
+            div#valor-irs {
+                margin: -34px 37px;
+                position: absolute;
+                z-index: 999999;
+                color: #000;
+                font-size: 7pt;
+            }
+
+            .desc2linhas {
+                margin-top: 15px;
+                margin-bottom: 17px;
+            }
+
+            .desc3linhas {
+                margin-top: -4px;
+                margin-bottom: 4px;
+            }
+
+            .desc4linhas {
+                margin-top: -17px;
+                margin-bottom: -2px;
+            }
+
+            #div_grafico_gauges {
+                height: 1350px;
+            }
+
+            .spinner {
+                width: 50px;
+                height: 50px;
+                border: 2px solid #f3f3f3;
+                border-top: 3px solid #333333;
+                border-radius: 100%;
+                animation: spin 0.8s infinite linear;
+
+                margin: 0 auto;
+                margin-top: 70px;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            div#ajuste {
+                height: 1050px;
+            }
+        </style></p>
 <p style="text-align: center;">&nbsp;<strong><span style="color: rgb(49, 59, 70);"><span style="font-size: x-large;">Resultados dos Indicadores</span></span></strong></p>
 <p style="text-align: left;">&nbsp;</p>
-<div id="filtro12017" style="display: none">&nbsp;</div>
-<div id="filtro22017" style="display: none">&nbsp;</div>
-<div id="filtro32017" style="display: none">&nbsp;</div>
-<div id="filtro42017" style="display: none">&nbsp;</div>
-<div id="filtro52017" style="display: none">&nbsp;</div>
-<div id="filtro62017" style="display: none">&nbsp;</div>
-<div id="filtro72017" style="display: none">&nbsp;</div>
-<div id="filtro82017" style="display: none">&nbsp;</div>
-<div id="filtro92017" style="display: none">&nbsp;</div>
-<div id="filtro102017" style="display: none">&nbsp;</div>
-<div id="filtro112017" style="display: none">&nbsp;</div>
-<div id="filtro122017" style="display: none">&nbsp;</div>
-<div id="filtro132017" style="display: none">&nbsp;</div>
-<div id="filtro142017" style="display: none">&nbsp;</div>
-<div id="filtro152017" style="display: none">&nbsp;</div>
-<div id="filtro162017" style="display: none">&nbsp;</div>
-<div id="filtro172017" style="display: none">&nbsp;</div>
-<div id="filtro182017" style="display: none">&nbsp;</div>
-<div id="filtro192017" style="display: none">&nbsp;</div>
-<div id="filtro202017" style="display: none">&nbsp;</div>
-<div id="filtro212017" style="display: none">&nbsp;</div>
-<div id="filtro222017" style="display: none">&nbsp;</div>
+<div id="filtro12018" style="display: none">&nbsp;</div>
+<div id="filtro22018" style="display: none">&nbsp;</div>
+<div id="filtro32018" style="display: none">&nbsp;</div>
+<div id="filtro42018" style="display: none">&nbsp;</div>
+<div id="filtro52018" style="display: none">&nbsp;</div>
+<div id="filtro62018" style="display: none">&nbsp;</div>
+<div id="filtro72018" style="display: none">&nbsp;</div>
+<div id="filtro82018" style="display: none">&nbsp;</div>
+<div id="filtro92018" style="display: none">&nbsp;</div>
+<div id="filtro102018" style="display: none">&nbsp;</div>
+<div id="filtro112018" style="display: none">&nbsp;</div>
+<div id="filtro122018" style="display: none">&nbsp;</div>
+<div id="filtro132018" style="display: none">&nbsp;</div>
+<div id="filtro142018" style="display: none">&nbsp;</div>
+<div id="filtro152018" style="display: none">&nbsp;</div>
+<div id="filtro162018" style="display: none">&nbsp;</div>
+<div id="filtro172018" style="display: none">&nbsp;</div>
+<div id="filtro182018" style="display: none">&nbsp;</div>
+<div id="filtro192018" style="display: none">&nbsp;</div>
+<div id="filtro202018" style="display: none">&nbsp;</div>
+<div id="filtro212018" style="display: none">&nbsp;</div>
+<div id="filtro222018" style="display: none">&nbsp;</div>
 <table width="251" border="0" cellpadding="1" cellspacing="1" align="center">
     <tbody>
         <tr>
-            <td colspan="3" style="text-align: center;"><img src="/image/image_gallery?uuid=ed8b6496-11a1-4007-bb87-d64d52016969&amp;groupId=5625802&amp;t=1498048665184" width="250" height="35" alt="" /></td>
-            <td rowspan="2" style="text-align: center; padding:10px">&nbsp;</td>
-            <td rowspan="2" style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/visao-por-meta"><img src="/image/image_gallery?uuid=1485ffdb-dab3-4023-8475-710b5850c4f9&amp;groupId=5625802&amp;t=1496922133039" width="250" height="70" alt="" /></a></td>
+            <td colspan="3" style="text-align: center;"><img src="http://www.csjt.jus.br/image/image_gallery?uuid=ed8b6496-11a1-4007-bb87-d64d52016969&amp;groupId=5625802&amp;t=1498048665184" width="250" height="35" alt="" /></td>
+            <td rowspan="2" style="text-align: center; padding-left:20px">&nbsp;</td>
+            <td rowspan="3" style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/visao-por-meta"><img src="http://portal.csjt.jus.br/image/image_gallery?uuid=bd3e8f7a-94d4-4f24-a91c-477e988765bd&amp;groupId=5625802&amp;t=1525460607269" alt="" /></a></td>
+        </tr>
+         <tr>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais"><img src="/image/image_gallery?uuid=184e028b-c728-4d32-807e-d78cb198ba66&groupId=5625802&t=1525117492876" width="83" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href=""><img src="/image/image_gallery?uuid=d5d3a6e0-a521-4aa9-81c7-263f3f813f83&groupId=5625802&t=1525116569840" width="83" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href=""><img src="/image/image_gallery?uuid=f1724fba-5282-4b9e-a2b9-107151600abd&groupId=5625802&t=1525117516414" width="83" height="35" alt="" /></a></td>
         </tr>
         <tr>
-            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/2015"><img src="/image/image_gallery?uuid=144670b9-65f2-4220-bf07-0753fd244fd7&amp;groupId=5625802&amp;t=1496922045540" width="83" height="35" alt="" /></a></td>
-            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais/2016"><img src="/image/image_gallery?uuid=f0624775-b22e-4aa0-9a93-6c3d1774c70f&amp;groupId=5625802&amp;t=1496922079147" width="83" height="35" alt="" /></a></td>
-            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais"><img src="/image/image_gallery?uuid=5f4d9208-8a41-4f1a-8ad0-9da72c2e0e0a&amp;groupId=5625802&amp;t=1496922088714" width="84" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><a href="/web/cgest/planejamento-estrategico-csjt/resultados-atuais"><img src="http://www.csjt.jus.br/image/image_gallery?uuid=7fd73afe-b9bd-4ffd-9a91-6f13f710fb4b&amp;groupId=5625802&amp;t=1525115359779" width="83" height="35" alt="" /></a></td>
+            <td style="text-align: center;"><img src="http://www.csjt.jus.br/image/image_gallery?uuid=d5d3a6e0-a521-4aa9-81c7-263f3f813f83&amp;groupId=5625802&amp;t=1525116569840" width="83" height="35" alt="" /></td>
+            <td style="text-align: center;"><img src="http://www.csjt.jus.br/image/image_gallery?uuid=f1724fba-5282-4b9e-a2b9-107151600abd&amp;groupId=5625802&amp;t=1525117516414" width="83" height="35" alt="" /></td>
         </tr>
     </tbody>
 </table>
 <p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 style="text-align: center; color: rgb(65, 44, 52); ">Resultados de Janeiro a Março&nbsp;</h1>
 <div id="spinner" class="spinner">&nbsp;</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -140,139 +1492,135 @@ div#ajuste{
 <div class="linha1">
 <div class="bloco-grafico">
 <p class="titulo"><strong>M1 - IMCSC</strong></p>
-<p class="desc2linhas">Capacitar 61,85% dos servidores</p>
-<div class="gauge" id="div_imcsc2017">&nbsp;</div>
+<p class="desc2linhas">Capacitar 11,14% dos servidores</p>
+<div class="gauge" id="div_imcsc2018" title="Indicador com o dado não disponível.">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M2 - IDC</strong></p>
-<p class="desc3linhas">Atender plenamente 96,5% dos servidores capacitados</p>
-<div class="gauge" id="div_idc2017">&nbsp;</div>
+<p class="desc3linhas">Atender plenamente 97% dos servidores capacitados</p>
+<div class="gauge" id="div_idc2018" title="Indicador com acompanhamento semestrral">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M3 - IRE</strong></p>
-<p class="desc2linhas">Reduzir a rotatividade para 11%</p>
-<div class="gauge" id="div_ire2017" title="Indicador com acompanhamento anual">&nbsp;</div>
+<p class="desc2linhas">Reduzir a rotatividade para 10,5%</p>
+<div class="gauge" id="div_ire2018" title="Indicador com acompanhamento anual">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M4 - ICO</strong></p>
-<p class="desc3linhas">Alcançar 61% de satisfação na Pesquisa de Clima Organizacional</p>
-<div class="gauge" id="div_ico2017" title="Indicador avaliado em 6 fatores">&nbsp;</div>
+<p class="desc4linhas">Alcançar o nível &quot;satisfatório&quot; na Pesquisa de Clima Organizacional</p>
+<div class="gauge" id="div_ico2018" title="Indicador com acompanhamento bianual - 2015 - 2017 - 2019">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M5 - IAFAST</strong></p>
-<p class="desc3linhas">Reduzir para 2,99% o afastamento de servidores</p>
-<div class="gauge" id="div_iafast2017">&nbsp;</div>
+<p class="desc3linhas">Reduzir para 2,97% o afastamento de servidores</p>
+<div class="gauge" id="div_iafast2018">&nbsp;</div>
 </div>
 </div>
 <div class="linha2">
 <div class="bloco-grafico">
 <p class="titulo"><strong>M6 - ISTI</strong></p>
-<p class="desc2linhas">Obter 78% de satisfação sobre os serviços de TI</p>
-<div class="gauge" id="div_isti2017" title="">&nbsp;</div>
+<p class="desc2linhas">Obter 79% de satisfação sobre os serviços de TI</p>
+<div class="gauge" id="div_isti2018" title="Indicador com acompanhamento anual">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M7 - IMP</strong></p>
-<p class="desc2linhas">Mapear 45% dos processos estratégicos</p>
-<div class="gauge" id="div_imp2017">&nbsp;</div>
+<p class="desc2linhas">Mapear 60% dos processos estratégicos</p>
+<div class="gauge" id="div_imp2018" title="Indicador com acompanhamento semestral">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo">&nbsp;<strong>M8 - IAC</strong></p>
-<p class="desc3linhas">Obter 70% do alinhamento da comunicação</p>
-<div class="gauge" title="" id="div_iac2017">&nbsp;</div>
+<p class="desc3linhas">Obter 75% do alinhamento da comunicação</p>
+<div class="gauge" id="div_iac2018" title="Indicador com acompanhamento anual">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M9 - IISGC</strong></p>
 <p class="desc3linhas">Implantar o Sistema de Custos em 11% dos TRTs</p>
-<div class="gauge" id="div_iisgc2017">&nbsp;</div>
+<div class="gauge" id="div_iisgc2018">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M10 - IISGP</strong></p>
-<p class="desc3linhas">Implantar o Sistema de Gestão de Pessoas em 50% dos TRTs</p>
-<div class="gauge" id="div_iisgp2017">&nbsp;</div>
+<p class="desc3linhas">Implantar o Sistema de Gestão de Pessoas em 55% dos TRTs</p>
+<div class="gauge" id="div_iisgp2018">&nbsp;</div>
 </div>
 </div>
 <div class="linha3">
 <div class="bloco-grafico">
 <p class="titulo"><strong>M11 - IACD</strong></p>
-<p class="desc3linhas">Contribuir para que 97% das determinações seja cumpridas</p>
-<div class="gauge" id="div_iacd2017">&nbsp;</div>
+<p class="desc3linhas">Contribuir para que 98% das determinações seja cumpridas</p>
+<div class="gauge" id="div_iacd2018">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M12 - ICRU</strong></p>
-<p class="desc3linhas">Contribuir para a replicação de 70% dos conteúdos obrigatórios</p>
-<div class="gauge" id="div_icru2017">&nbsp;</div>
+<p class="desc3linhas">Contribuir para a replicação de 80% dos conteúdos obrigatórios</p>
+<div class="gauge" id="div_icru2018">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M13 - IEXPE</strong></p>
-<p class="desc2linhas">Cumprir 65% dos projetos estratégicos</p>
-<div class="gauge" id="div_iexpe2017">&nbsp;</div>
+<p class="desc2linhas">Cumprir 70% dos projetos estratégicos</p>
+<div class="gauge" id="div_iexpe2018" title="Indicador com acompanhamento semestral">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M14 - IRS</strong></p>
-<p class="desc2linhas">Supervisionar R$ 403.182.889 de recursos</p>
-<div class="gauge" id="div_irs2017">&nbsp;</div>
-<div id="valor-irs">R$ 1.413.528.771,52</div>
+<p class="desc2linhas" style="margin-top:20px;">Supervisionar recursos</p>
+<div class="gauge" id="div_irs2018" style="margin-top:30px;">&nbsp;</div>
+<div id="valor-irs">R$ 43.853.748,86</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M15 - ICDA</strong></p>
-<p class="desc4linhas">Contribuir para que 80% das deliberações de auditoria sejam cumpridas</p>
-<div class="gauge" id="div_icda2017">&nbsp;</div>
+<p class="desc4linhas">Contribuir para que 85% das deliberações de auditoria sejam cumpridas</p>
+<div class="gauge" id="div_icda2018">&nbsp;</div>
 </div>
 </div>
 <div class="linha4">
 <div class="bloco-grafico">
 <p class="titulo"><strong>M16 - ITI</strong></p>
-<p class="desc4linhas">Contribuir para a publicação de 95% das informações de Transparência</p>
-<div class="gauge" id="div_iti2017">&nbsp;</div>
+<p class="desc4linhas">Contribuir para a publicação de 97% das informações de Transparência</p>
+<div class="gauge" id="div_iti2018">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M17 - ISIPJe</strong></p>
-<p class="desc3linhas">Obter 36,93% de satisfação interna com o PJe</p>
-<div class="gauge" id="div_isipje2017" title="Indicador com acompanhamento anual">&nbsp;</div>
+<p class="desc3linhas">Obter 41,93% de satisfação interna com o PJe</p>
+<div class="gauge" id="div_isipje2018" title="Indicador com acompanhamento anual">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M18 - ISEPJe</strong></p>
-<p class="desc3linhas">Obter 48,41% de satisfação externa com o PJe</p>
-<div class="gauge" id="div_isepje2017" title="">&nbsp;</div>
+<p class="desc3linhas">Obter 53,41% de satisfação externa com o PJe</p>
+<div class="gauge" id="div_isepje2018" title="Indicador com acompanhamento anual">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M19 - IALAP</strong></p>
-<p class="desc3linhas">Obter 85% de acórdãos liberados para publicação no prazo</p>
-<div class="gauge" id="div_ialap2017">&nbsp;</div>
+<p class="desc3linhas">Obter 90% de acórdãos liberados para publicação no prazo</p>
+<div class="gauge" id="div_ialap2018">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M20 - IISGO</strong></p>
-<p class="desc4linhas">Implantar 25% dos projetos do Sistema de Orçamento e Finanças na JT</p>
-<div class="gauge" id="div_iisgo2017" title="Indicador implantado em 2017">&nbsp;</div>
+<p class="desc4linhas">Implantar 62% dos projetos do Sistema de Orçamento e Finanças na JT</p>
+<div class="gauge" id="div_iisgo2018" title="Indicador com acompanhamento semestral">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M21 - IRAGP</strong></p>
-<p class="desc4linhas">Alcançar 3% de recolhimento de acervo de Guarda Permanente na JT de 1&ordm; e 2&ordm; Graus</p>
-<div class="gauge" id="div_iragp2017" title="Indicador implantado em 2017">&nbsp;</div>
+<p class="desc4linhas">Alcançar 4% de recolhimento de acervo de Guarda Permanente na JT de 1&ordm; e 2&ordm; Graus</p>
+<div class="gauge" id="div_iragp2018" title="Indicador com acompanhamento anual">&nbsp;</div>
 </div>
 <div class="bloco-grafico">
 <p class="titulo"><strong>M22 - IRPJP</strong></p>
-<p class="desc4linhas">Aumentar 2% ao ano o alcance dos produtos de comunicação referentes ao CSJT</p>
-<div class="gauge" id="div_irpjp2017" title="(ano-base)">&nbsp;</div>
+<p class="desc4linhas">Aumentar para 368.834,27 o alcance dos produtos de comunicação</p>
+<div class="gauge" id="div_irpjp2018" title="(ano-base)">&nbsp;</div>
 </div>
 </div>
 <!-- fim da linha4 --></div>
 <p>&nbsp;</p>
 <script type="text/javascript">
-	function scrollWin() {
-		window.scrollTo(0, 310);
-	}
-	function ocultarSpinner(){
-		document.getElementById("spinner").style.display = "none";
-		document.getElementById("ajuste").style.display = "none";
-	}
-	function mostrarGrafico(){
-		document.getElementById("div_grafico_gauges").style.display = "block";
-	}
-</script>
-    
-    
-    
-    </body>
+        function scrollWin() {
+            window.scrollTo(0, 310);
+        }
 
-</html>
+        function ocultarSpinner() {
+            document.getElementById("spinner").style.display = "none";
+            document.getElementById("ajuste").style.display = "none";
+        }
+
+        function mostrarGrafico() {
+            document.getElementById("div_grafico_gauges").style.display = "block";
+        }
+    </script>
